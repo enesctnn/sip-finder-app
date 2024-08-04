@@ -1,0 +1,77 @@
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: $button-background;
+  color: $button-text;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $button-hover-background;
+    color: $button-hover-text;
+  }
+
+  &.primary {
+    background-color: $primary-color;
+    color: $button-text;
+  }
+
+  &.secondary {
+    background-color: $secondary-color;
+    color: $text-color;
+  }
+
+  &.success {
+    background-color: $success-color;
+    color: #ffffff;
+  }
+
+  &.warning {
+    background-color: $warning-color;
+    color: #ffffff;
+  }
+
+  &.error {
+    background-color: $error-color;
+    color: #ffffff;
+  }
+
+  &.dark {
+    background-color: $dark-color;
+    color: #ffffff;
+  }
+
+  &.light {
+    background-color: $light-color;
+    color: $text-color;
+  }
+
+  &.link {
+    background-color: transparent;
+
+    &:hover {
+      color: black;
+      background-color: darken(#ffffff, 30%);
+    }
+    &:active {
+      background-color: darken(#ffffff, 30%);
+    }
+  }
+
+  &:active {
+    background-color: darken($button-background, 5%);
+  }
+
+  &:disabled {
+    background-color: lighten($button-background, 20%);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

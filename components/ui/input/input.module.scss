@@ -1,0 +1,25 @@
+.input {
+  width: 100%;
+  padding: $input-padding;
+  border: 1px solid $input-border;
+  border-radius: $input-border-radius;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:focus {
+    border-color: $focus-border-color;
+    box-shadow: $focus-box-shadow;
+    outline: none;
+  }
+
+  &.error {
+    border-color: $error-border-color;
+    box-shadow: $error-box-shadow;
+  }
+
+  &.success {
+    border-color: $success-border-color;
+    box-shadow: $success-box-shadow;
+  }
+}

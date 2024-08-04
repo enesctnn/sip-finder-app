@@ -1,9 +1,10 @@
 'use client';
 
-import { UseFetchOptions } from '@/@types/hooks/useFetch';
 import { useEffect, useState } from 'react';
 
-const useFetch = <T>({ fetchFn }: UseFetchOptions) => {
+type UseFetchOptions = { fetchFn: () => Promise<Response> };
+
+export const useFetch = <T>({ fetchFn }: UseFetchOptions) => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState<string | null>(null);
@@ -44,5 +45,3 @@ const useFetch = <T>({ fetchFn }: UseFetchOptions) => {
 
   return { data, isLoading, isError };
 };
-
-export default useFetch;

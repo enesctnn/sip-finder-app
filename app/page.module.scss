@@ -1,29 +1,39 @@
 .container {
-  @include ellipse_gradient($secondary-color, $primary-color);
+  @include ellipse_gradient($primary-200 30%, $primary-600 80%);
   place-content: center;
 }
 
 .card {
-  background-color: $card-background;
-  width: 550px;
+  width: 400px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px 30px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px 8px $shadow-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-
-  h1 {
-    font-size: 42px;
-    text-align: center;
+  gap: 0.5rem;
+  .header {
+    font-size: 32px;
   }
+  .content {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+  }
+  @include fade-slide-in-from-top;
+}
 
-  p {
-    font-weight: 500;
-    font-size: 20px;
+.image-container {
+  margin: 0 auto;
+  margin-bottom: 24px;
+  width: 200px;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid black;
+  img {
+    object-fit: cover;
+    object-position: center;
   }
 }

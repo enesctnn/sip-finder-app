@@ -1,0 +1,30 @@
+.card {
+  @include fade-slide-in-from-right;
+  width: 350px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+  padding: 12px 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+  gap: 8px;
+}

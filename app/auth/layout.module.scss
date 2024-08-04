@@ -1,0 +1,6 @@
+.layout {
+  @include ellipse_gradient($primary-300 30%, $primary-900 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
