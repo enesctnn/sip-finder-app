@@ -1,0 +1,32 @@
+// Color variables
+$primary-color: #6f4f28;
+$secondary-color: #8e735b;
+$accent-color: #d4a373;
+$background-color: #f9f4f0;
+$text-color: #3c2e1f;
+
+$button-background: $primary-color;
+$button-text: #ffffff;
+$button-hover-background: darken($primary-color, 10%);
+$button-hover-text: #ffffff;
+
+$card-background: #ffffff;
+$card-border: $secondary-color;
+
+$input-background: #ffffff;
+$input-border: $secondary-color;
+$input-placeholder: lighten($primary-color, 40%);
+
+$border-color: $secondary-color;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+$success-color: #27ae60; // Success Green
+$warning-color: #f39c12; // Warning Yellow
+$error-color: #c0392b; // Error Red
+
+$link-color: $primary-color;
+$link-hover-color: darken($primary-color, 10%);
+
+@mixin ellipse_gradient($start-color, $end-color) {
+  background: radial-gradient(ellipse at top, $start-color, $end-color);
+}
