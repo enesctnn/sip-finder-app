@@ -53,6 +53,30 @@
     color: $text-color;
   }
 
+  &.ghost {
+    background: transparent;
+
+    &:hover {
+      color: $text-muted;
+    }
+    &:active {
+      background-color: inherit;
+    }
+  }
+
+  &.link {
+    background-color: transparent;
+
+    &:hover {
+      color: black;
+      background-color: $link-color;
+    }
+    &:active {
+      color: black;
+      background-color: $link-hover-color;
+    }
+  }
+
   &:active {
     background-color: darken($button-background, 5%);
   }

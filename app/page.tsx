@@ -26,7 +26,7 @@ export default function Home() {
           </CardTitle>
         </CardHeader>
         <CardContent className={styles.content}>
-Log in to get started on your flavor adventure!
+          Log in to get started on your flavor adventure!
         </CardContent>
         <CardFooter>
           <LinkButton href="/auth/login" variant="link">

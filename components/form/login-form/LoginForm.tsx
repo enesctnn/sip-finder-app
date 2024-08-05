@@ -2,10 +2,10 @@
 
 import { Button } from '@/components/ui/button/button';
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
 } from '@/components/ui/card/Card';
 import { Input } from '@/components/ui/input/input';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
@@ -60,7 +60,7 @@ export function LoginForm() {
     setIsPending(true);
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(formValues),
       });

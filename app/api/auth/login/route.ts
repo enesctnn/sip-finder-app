@@ -2,7 +2,6 @@
 
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { dummyUsers } from '@/utils/dummyUser';
-import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {

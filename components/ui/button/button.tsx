@@ -10,7 +10,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     | 'error'
     | 'info'
     | 'dark'
-    | 'light';
+    | 'light'
+    | 'link'
+    | 'ghost';
 };
 
 export const Button: React.FC<ButtonProps> = ({

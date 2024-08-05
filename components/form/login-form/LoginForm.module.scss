@@ -1,6 +1,8 @@
 .card {
   @include fade-slide-in-from-right;
-  width: 350px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .title {

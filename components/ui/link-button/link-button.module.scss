@@ -55,13 +55,14 @@
 
   &.link {
     background-color: transparent;
-
+		
     &:hover {
       color: black;
-      background-color: darken(#ffffff, 30%);
+      background-color: $link-color;
     }
     &:active {
-      background-color: darken(#ffffff, 30%);
+      color: black;
+      background-color: $link-hover-color;
     }
   }
 

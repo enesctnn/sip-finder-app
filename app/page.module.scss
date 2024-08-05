@@ -1,11 +1,12 @@
 .container {
   @include ellipse_gradient($primary-200 30%, $primary-600 80%);
   place-content: center;
+  @include fullscreen;
 }
 
 .card {
-  width: 400px;
-  max-width: 100%;
+  max-width: 400px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
