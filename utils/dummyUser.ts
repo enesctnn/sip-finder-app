@@ -1,9 +1,4 @@
-type User = {
-  username: string;
-  email: string;
-  password: string;
-  token: string;
-};
+import { User } from '@/@types/User';
 
 export const dummyUsers: User[] = [
   {
