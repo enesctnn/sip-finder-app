@@ -11,7 +11,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+    box-shadow 0.2s ease-in-out, scale 0.2s ease-in-out;
 
   &:hover {
     background-color: $button-hover-background;
@@ -24,28 +24,28 @@
   }
 
   &.secondary {
-    background-color: $secondary-color;
-    color: $text-color;
+    background-color: $accent-700;
+    color: $button-text;
   }
 
   &.success {
     background-color: $success-color;
-    color: #ffffff;
+    color: $button-text;
   }
 
   &.warning {
     background-color: $warning-color;
-    color: #ffffff;
+    color: $button-text;
   }
 
   &.error {
     background-color: $error-color;
-    color: #ffffff;
+    color: $button-text;
   }
 
   &.dark {
     background-color: $dark-color;
-    color: #ffffff;
+    color: $button-text;
   }
 
   &.light {
@@ -53,21 +53,39 @@
     color: $text-color;
   }
 
-  &.link {
-    background-color: transparent;
-		
+  &.ghost {
+    background: transparent;
+    color: $button-text;
+
     &:hover {
-      color: black;
-      background-color: $link-color;
+      color: $button-hover-background;
     }
     &:active {
-      color: black;
-      background-color: $link-hover-color;
+      background-color: inherit;
     }
   }
 
+  &.link {
+    background-color: transparent;
+    color: black;
+
+    &:hover {
+      color: $button-hover-text;
+      background-color: $button-background;
+    }
+    &:active {
+      color: $button-hover-text;
+      background-color: $button-background;
+    }
+  }
+
+  &:hover {
+    scale: 110%;
+    background-color: $button-hover-background;
+  }
+
   &:active {
-    background-color: darken($button-background, 5%);
+    scale: 105%;
   }
 
   &:disabled {

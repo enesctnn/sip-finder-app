@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import styles from './Header.module.scss';
 import { LogoutButton } from '../logout-button/LogoutButton';
+import styles from './Header.module.scss';
 
 export function Header() {
   return (
@@ -15,8 +15,9 @@ export function Header() {
         <Image
           src="/assets/coctails.jpg"
           alt="A table full of delicious cocktails"
-          width={5600}
-          height={3200}
+          width={1920}
+          height={1080}
+          quality={100}
         />
       </div>
     </>

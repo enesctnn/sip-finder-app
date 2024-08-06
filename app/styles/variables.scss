@@ -1,44 +1,45 @@
-// Color variables
-$primary-color: #004080;
-$secondary-color: #003366;
-$accent-color: #ff6600;
 $background-color: #f0f4f7;
 $text-color: #2e2e2e;
 $text-muted: #6c757d;
 
-$primary-100: #003366;
-$primary-200: #002a55;
-$primary-300: #00224d;
-$primary-400: #001d40;
-$primary-500: #001533;
-$primary-600: #000d29;
-$primary-700: #000822;
-$primary-800: #00051c;
-$primary-900: #000218;
+$primary-color: #330000;
 
-$secondary-100: #002a55;
-$secondary-200: #00224d;
-$secondary-300: #001d40;
-$secondary-400: #001533;
-$secondary-500: #000d29;
-$secondary-600: #000822;
-$secondary-700: #00051c;
-$secondary-800: #000218;
-$secondary-900: #000000;
+$primary-100: #ff6666;
+$primary-200: #ff3333;
+$primary-300: #ff0000;
+$primary-400: #e60000;
+$primary-500: #cc0000;
+$primary-600: #b30000;
+$primary-700: #990000;
+$primary-800: #800000;
+$primary-900: #660000;
 
-$accent-100: #ffcc99;
-$accent-200: #ffbb80;
-$accent-300: #ffaa66;
-$accent-400: #ff9955;
-$accent-500: #ff884d;
-$accent-600: #ff7733;
-$accent-700: #ff6600;
-$accent-800: #e65c00;
-$accent-900: #cc5200;
+$secondary-color: #004d00;
 
+$secondary-100: #004c00;
+$secondary-200: #003f00;
+$secondary-300: #003300;
+$secondary-400: #002600;
+$secondary-500: #001a00;
+$secondary-600: #001000;
+$secondary-700: #000a00;
+$secondary-800: #000600;
+$secondary-900: #000200;
+
+$accent-color: #f6c1c1;
+
+$accent-100: #f8dcdc;
+$accent-200: #f5b7b7;
+$accent-300: #f28e8e;
+$accent-400: #f06666;
+$accent-500: #e84444;
+$accent-600: #d93030;
+$accent-700: #c92020;
+$accent-800: #b51010;
+$accent-900: #a00000;
 $button-background: $primary-color;
 $button-text: #ffffff;
-$button-hover-background: darken($primary-color, 10%);
+$button-hover-background: $primary-700;
 $button-hover-text: #ffffff;
 
 $card-background: #ffffff;

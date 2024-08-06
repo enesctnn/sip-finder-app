@@ -14,9 +14,7 @@ export const UserContextProvider = ({
   useEffect(() => {
     const getUser = async () => {
       const res = await fetch('/api/auth/me');
-      if (!res.ok) {
-        throw new Error('Error an error occured while fetching user.');
-      }
+			if(!res.ok) return;
       const data = await res.json();
       setUserSlice(data);
     };

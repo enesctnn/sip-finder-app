@@ -1,3 +1,5 @@
+import { ExploreCocktails } from '@/components/cocktails/explore-coctails/ExploreCocktails';
+
 export default function CocktailsPage() {
-  return <h1>CocktailsPage</h1>;
+  return <ExploreCocktails />;
 }

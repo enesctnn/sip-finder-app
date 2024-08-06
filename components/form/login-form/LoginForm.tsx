@@ -2,10 +2,10 @@
 
 import { Button } from '@/components/ui/button/button';
 import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
 } from '@/components/ui/card/Card';
 import { Input } from '@/components/ui/input/input';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
@@ -132,7 +132,11 @@ export function LoginForm() {
           <menu className={styles.menu}>
             {error && <FormError message={error} />}
             {success && <FormSuccess message="Login success!" />}
-            <Button type="submit" disabled={isPending || success || !isValid}>
+            <Button
+              type="submit"
+              variant="link"
+              disabled={isPending || success || !isValid}
+            >
               {isPending ? 'Loging in...' : 'Login'}
             </Button>
           </menu>

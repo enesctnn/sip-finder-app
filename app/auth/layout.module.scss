@@ -1,5 +1,5 @@
 .layout {
-  @include ellipse_gradient($primary-300 30%, $primary-900 80%);
+  @include ellipse_gradient($primary-900 50%, $primary-color);
   place-content: center;
   @include fullscreen;
 }

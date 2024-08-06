@@ -53,5 +53,5 @@ export type Cocktail = {
 };
 
 export type SearchCocktailsByNameResponseType = {
-  data: { drinks: Cocktail[] };
+  drinks: Cocktail[];
 };

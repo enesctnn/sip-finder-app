@@ -1,5 +1,5 @@
 .layout {
-  @include linear-gardient-t-to-b($secondary-400 50%, $secondary-700);
+  background-color: darken($primary-900, 5%);
   @include fullscreen;
   width: 100%;
   overflow: hidden;

@@ -1,0 +1,46 @@
+.cocktail-card {
+  background-color: $primary-color !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  border-radius: 8px;
+  height: 380px;
+  padding: 0 !important;
+  border: none !important;
+
+  .title {
+    color: white !important;
+  }
+
+  .image-container {
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    menu {
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
