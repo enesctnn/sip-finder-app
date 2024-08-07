@@ -1,8 +1,8 @@
 'use client';
 
+import { User } from '@/@types/User';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from './userContext';
-import { User } from '@/@types/User';
 
 export const UserContextProvider = ({
   children,
@@ -14,7 +14,7 @@ export const UserContextProvider = ({
   useEffect(() => {
     const getUser = async () => {
       const res = await fetch('/api/auth/me');
-			if(!res.ok) return;
+      if (!res.ok) return;
       const data = await res.json();
       setUserSlice(data);
     };
@@ -29,9 +29,7 @@ export const UserContextProvider = ({
 export const useUserContext = () => {
   const context = useContext(UserContext);
   if (typeof context === undefined) {
-    throw new Error(
-      'useUserContext must be used within a UserContextProvider'
-    );
+    throw new Error('useUserContext must be used within a UserContextProvider');
   }
   return context;
 };

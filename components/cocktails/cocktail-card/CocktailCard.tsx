@@ -1,15 +1,15 @@
+'use client';
+
 import { Cocktail } from '@/@types/api/SearchCocktailsByNameResponseType';
-import { Button } from '@/components/ui/button/button';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
 } from '@/components/ui/card/Card';
 import Image from 'next/image';
-import { LiaCocktailSolid } from 'react-icons/lia';
 import styles from './CocktailCard.module.scss';
+import { AddToCocktailBasketButton } from './add-to-cocktail-basket-button/AddToCocktailBasketButton';
 
 export function CocktailCard({ cocktail }: { cocktail: Cocktail }) {
   return (
@@ -29,15 +29,12 @@ export function CocktailCard({ cocktail }: { cocktail: Cocktail }) {
       </CardContent>
       <CardFooter className={styles.footer}>
         <menu>
-          <Button variant="secondary">
-            Add to
-            <LiaCocktailSolid size={28} />
-          </Button>
+          <AddToCocktailBasketButton cocktail={cocktail} />
         </menu>
-        <CardDescription>
-          <p style={{ color: 'white', fontWeight: 'bold' }}>Category:</p>
+        <div>
+          <h3>Category:</h3>
           <p>{cocktail.strCategory}</p>
-        </CardDescription>
+        </div>
       </CardFooter>
     </Card>
   );

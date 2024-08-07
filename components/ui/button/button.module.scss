@@ -11,7 +11,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out, scale 0.2s ease-in-out;
+    box-shadow 0.2s ease-in-out, scale 0.15s;
 
   &:hover {
     background-color: $button-hover-background;
@@ -71,7 +71,7 @@
 
     &:hover {
       color: $button-hover-text;
-      background-color: $button-background;
+      background-color: $button-hover-background;
     }
     &:active {
       color: $button-hover-text;
@@ -90,7 +90,7 @@
 
   &:disabled {
     background-color: lighten($button-background, 20%);
-    cursor: not-allowed;
     opacity: 0.6;
+    pointer-events: none;
   }
 }

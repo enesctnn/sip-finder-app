@@ -13,7 +13,8 @@ type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
     | 'info'
     | 'dark'
     | 'light'
-    | 'link';
+    | 'link'
+    | 'ghost';
 };
 
 export const LinkButton: React.FC<LinkButtonProps> = ({

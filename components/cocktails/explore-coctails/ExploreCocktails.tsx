@@ -15,6 +15,7 @@ export function ExploreCocktails() {
   const { data } = useQuery({
     queryKey: ['search-cocktails', searchTerm],
     queryFn: () => fetchCocktailsByName(searchTerm),
+		
   });
 
   return (

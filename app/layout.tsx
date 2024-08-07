@@ -1,4 +1,4 @@
-import { UserContextProvider } from '@/store/UserContextProvider';
+import { UserContextProvider } from '@/store/user-context/UserContextProvider';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import './styles/globals.scss';
@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={noto.className}>
         <UserContextProvider>
+          <div id="modal-root"></div>
           <main>{children}</main>
         </UserContextProvider>
       </body>

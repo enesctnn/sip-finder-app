@@ -1,0 +1,23 @@
+.modal {
+  padding: 0;
+  margin: auto;
+  border: none;
+  background-color: transparent;
+
+  &::backdrop {
+    background-color: $primary-color;
+    opacity: 0.8;
+  }
+}
+
+.modal-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
