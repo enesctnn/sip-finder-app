@@ -14,7 +14,10 @@ export async function GET(request: NextRequest) {
     const user = dummyUsers.find(user => user.token === token);
 
     if (!user) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json(
+        { message: 'Invalid or expired token!' },
+        { status: 401 }
+      );
     }
 
     return NextResponse.json(user);

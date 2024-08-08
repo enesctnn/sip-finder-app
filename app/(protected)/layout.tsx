@@ -8,6 +8,9 @@ function ProtectedLayout({ children }: { children: React.ReactNode }) {
     <Provider>
       <CocktailBasketContextProvider>
         <div className={styles.layout}>
+          <div id="cocktail-basket-modal" />
+          <div id="mobile-menu-modal" />
+          <div id="confirm-modal" />
           <Header />
           {children}
         </div>

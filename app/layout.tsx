@@ -19,12 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={noto.className}>
         <UserContextProvider>
-          <div id="cocktail-basket-modal" />
-          <div id="confirm-modal" />
-          <main>
-            <div id="mobile-menu-modal" />
-            {children}
-          </main>
+          <main>{children}</main>
         </UserContextProvider>
       </body>
     </html>

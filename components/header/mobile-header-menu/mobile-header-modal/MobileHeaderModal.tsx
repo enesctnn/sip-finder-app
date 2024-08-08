@@ -58,7 +58,7 @@ export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
               variant="link"
               className={styles['close-modal']}
             >
-              <IoMdClose />
+              <IoMdClose size={26} />
             </Button>
           </form>
           <ul className={styles['header-menu-items']}>
