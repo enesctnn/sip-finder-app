@@ -98,6 +98,7 @@ export function LoginForm() {
               render={({ field }) => (
                 <Input
                   {...field}
+                  id="email"
                   disabled={isPending || success}
                   error={!!errors.email || !!error}
                   placeholder="Email"
@@ -117,6 +118,7 @@ export function LoginForm() {
               render={({ field }) => (
                 <Input
                   {...field}
+                  id="password"
                   disabled={isPending || success}
                   error={!!errors.password || !!error}
                   placeholder="******"
