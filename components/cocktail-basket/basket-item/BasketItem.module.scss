@@ -24,6 +24,7 @@
   height: 100px;
   border-radius: 25px;
   overflow: hidden;
+  @include loading-background(#e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
 }
 
 .image {

@@ -3,4 +3,8 @@
   @include fullscreen;
   width: 100%;
   overflow: hidden;
+	#mobile-menu-modal {
+    position: absolute;
+    inset: 0;
+  }
 }

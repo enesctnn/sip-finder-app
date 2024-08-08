@@ -1,7 +1,7 @@
 'use client';
 
 import { Cocktail } from '@/@types/api/SearchCocktailsByNameResponseType';
-import { CocktailBasketContextType } from '@/@types/CocktailBasket';
+import { CocktailBasketContextType } from '@/@types/CocktailBasketContext';
 import { useContext, useState } from 'react';
 import {
   CocktailBasketContext,

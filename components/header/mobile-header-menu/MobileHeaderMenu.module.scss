@@ -1,0 +1,17 @@
+.header-modal-button {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: scale 0.15s;
+  &:active {
+    scale: 115%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-modal-button {
+    display: block !important;
+  }
+}

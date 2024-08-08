@@ -1,0 +1,45 @@
+.modal {
+  background-color: transparent;
+  border: none;
+  min-width: 100%;
+
+  &::backdrop {
+    background-color: $primary-color;
+    opacity: 0.8;
+  }
+}
+
+.header-menu-content {
+  @include fade-slide-in-from-top;
+  background-color: $primary-900;
+  padding: 4rem 0;
+}
+
+.header-menu-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.close-modal-form {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.close-modal {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0 !important;
+  background-color: transparent !important;
+  color: inherit !important;
+
+  &:hover,
+  &:active {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+}

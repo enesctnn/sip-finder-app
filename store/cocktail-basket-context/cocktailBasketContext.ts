@@ -1,7 +1,7 @@
 import {
   CocktailBasketContextType,
   CocktailBasketSetterContextType,
-} from '@/@types/CocktailBasket';
+} from '@/@types/CocktailBasketContext';
 import React from 'react';
 
 export const CocktailBasketContext =

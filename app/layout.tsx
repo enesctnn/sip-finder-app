@@ -19,8 +19,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={noto.className}>
         <UserContextProvider>
-          <div id="cocktail-basket-modal" />
-          <div id="confirm-modal" />
           <main>{children}</main>
         </UserContextProvider>
       </body>
