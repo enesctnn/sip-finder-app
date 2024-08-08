@@ -1,5 +1,3 @@
-'use client';
-
 import { Cocktail } from '@/@types/api/SearchCocktailsByNameResponseType';
 import {
   Card,

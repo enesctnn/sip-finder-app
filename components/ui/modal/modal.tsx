@@ -62,7 +62,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
           <IoIosCloseCircleOutline />
         </Button>
         <CardHeader>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
         </CardHeader>
 
         <CardContent>{children}</CardContent>
