@@ -24,7 +24,7 @@ export function CocktailBasket() {
       {basketKeys.length > 0 && (
         <Button
           type="button"
-          variant="link"
+          variant="secondary"
           onClick={() => {
             // TODO: save the cocktail id's from basket to saved cocktails
           }}
@@ -32,7 +32,7 @@ export function CocktailBasket() {
           Save all cocktails
         </Button>
       )}
-      <Button type="submit" variant="error">
+      <Button type="submit" variant="link">
         Close
       </Button>
     </>

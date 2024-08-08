@@ -5,8 +5,8 @@ import { ModalHandle } from '@/@types/components/modal';
 import { Button } from '@/components/ui/button/button';
 import { Modal } from '@/components/ui/modal/modal';
 import {
-  useBasketContext,
-  useBasketSetterContext,
+	useBasketContext,
+	useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
 import { useRef } from 'react';
 import { LiaCocktailSolid } from 'react-icons/lia';
@@ -25,12 +25,11 @@ export function AddToCocktailBasketButton({
       <Button
         onClick={() => toggleCocktailBasket(cocktail)}
         type="submit"
-        variant="link"
-        className={styles.confirm}
+        variant="secondary"
       >
         Confirm
       </Button>
-      <Button type="submit" variant="error">
+      <Button type="submit" variant="link">
         Cancel
       </Button>
     </>

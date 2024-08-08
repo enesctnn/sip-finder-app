@@ -22,10 +22,10 @@ export function BasketItem({
         />
       </div>
       <article className={styles['cocktail-info']}>
-        <header>
+        <section className={styles.details}>
           <h2 className={styles.label}>Cocktail</h2>
-          <h2 className={styles.drinkName}> {strDrink}</h2>
-        </header>
+          <p className={styles.drinkName}>{strDrink}</p>
+        </section>
         <section className={styles.details}>
           <h4 className={styles.label}>Alcoholic</h4>
           <p className={styles.value}>{strAlcoholic}</p>
