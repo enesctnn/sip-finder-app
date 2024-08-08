@@ -1,0 +1,42 @@
+.modal {
+  background-color: transparent;
+  border: none;
+  @include fullscreen;
+
+  &::backdrop {
+    background-color: $primary-color;
+    opacity: 0.8;
+		display:none !important;
+  }
+}
+
+.header-menu-content {
+  @include fade-slide-in-from-top;
+  background-color: $primary-900;
+  position: relative;
+  width: 100%;
+}
+
+.header-menu-items {
+  list-style: none;
+}
+
+.close-modal-form {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.close-modal {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0 !important;
+  background-color: transparent !important; // Arka planı şeffaf yapar
+  color: inherit !important;
+
+  &:hover,
+  &:active {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+}

@@ -21,7 +21,10 @@ export default function RootLayout({
         <UserContextProvider>
           <div id="cocktail-basket-modal" />
           <div id="confirm-modal" />
-          <main>{children}</main>
+          <main>
+            <div id="mobile-menu-modal" />
+            {children}
+          </main>
         </UserContextProvider>
       </body>
     </html>

@@ -146,3 +146,22 @@ $success-box-shadow: 0 0 0 3px rgba($success-color, 0.2);
     transform: scale(1);
   }
 }
+
+@mixin loading-background(
+  $from: $primary-color 25%,
+  $via: $primary-900 50%,
+  $to: $primary-color 75%
+) {
+  background: linear-gradient(90deg, $from, $via, $to);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}

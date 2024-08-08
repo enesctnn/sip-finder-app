@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Header.module.scss';
 import { HeaderMenuItems } from './header-menu-items/HeaderMenuItems';
+import { MobileHeaderMenu } from './mobile-header-menu/MobileHeaderMenu';
 
 export function Header() {
   return (
@@ -8,6 +9,7 @@ export function Header() {
       <header className={styles.header}>
         <h1>Sip Finder</h1>
         <HeaderMenuItems />
+        <MobileHeaderMenu />
       </header>
       <div className={styles['main-image']}>
         <Image
