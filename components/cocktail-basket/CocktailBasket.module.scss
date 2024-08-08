@@ -1,29 +1,3 @@
-.open-basket-button {
-  position: relative;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  color: white !important;
-  font: bold 18px Roboto, sans-serif !important;
-  @include bump;
-  &:hover {
-    background-color: transparent !important;
-  }
-}
-
-.cocktail-count {
-  position: absolute;
-  top: -5px;
-  right: 4px;
-  background-color: $primary-900;
-  height: 19px;
-  width: 19px;
-  font-size: 14px;
-  place-content: center;
-  text-align: center;
-  border-radius: 999px;
-}
-
 .basket-list {
   list-style: none;
   display: flex;

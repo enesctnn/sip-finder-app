@@ -6,11 +6,11 @@ import {
   useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
 import { useRef } from 'react';
-import { LiaCocktailSolid } from 'react-icons/lia';
 import { Button } from '../ui/button/button';
 import { Modal } from '../ui/modal/modal';
 import { BasketItem } from './basket-item/BasketItem';
 import styles from './CocktailBasket.module.scss';
+import { OpenBasketButton } from './open-basket-button/OpenBasketButton';
 
 export function CocktailBasket() {
   const dialog = useRef<ModalHandle>(null);
@@ -49,15 +49,10 @@ export function CocktailBasket() {
 
   return (
     <>
-      <Button
-        onClick={handleOpenModal}
-        variant="link"
-        className={styles['open-basket-button']}
-      >
-        <LiaCocktailSolid size={28} />
-        Basket
-        <div className={styles['cocktail-count']}>{basketKeys.length}</div>
-      </Button>
+      <OpenBasketButton
+        basketCount={basketKeys.length}
+        handleOpenModal={handleOpenModal}
+      />
 
       <Modal
         ref={dialog}
