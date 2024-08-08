@@ -24,7 +24,7 @@
   }
 
   &.secondary {
-    background-color: $accent-700;
+    background-color: $secondary-700;
     color: $button-text;
   }
 
@@ -70,11 +70,11 @@
     color: black;
 
     &:hover {
-      color: $button-hover-text;
+      color: white;
       background-color: $button-hover-background;
     }
     &:active {
-      color: $button-hover-text;
+      color: white;
       background-color: $button-background;
     }
   }
@@ -92,5 +92,6 @@
     background-color: lighten($button-background, 20%);
     opacity: 0.6;
     pointer-events: none;
+    color: white;
   }
 }

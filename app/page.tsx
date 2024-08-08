@@ -16,7 +16,7 @@ export default function Home() {
         <CardHeader>
           <div className={styles['image-container']}>
             <Image
-              src="/assets/spill-cocktail.jpg"
+              src="/assets/pouring-amber-liquor.jpg"
               alt="cocktails image"
               fill
             />

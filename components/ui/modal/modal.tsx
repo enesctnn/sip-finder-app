@@ -1,16 +1,26 @@
 'use client';
 
 import { ModalHandle, ModalProps } from '@/@types/components/modal';
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { Button } from '../button/button';
 import { Card, CardContent, CardFooter, CardHeader } from '../card/Card';
 import styles from './modal.module.scss';
 
 export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
-  { title, description, actions },
+  { title, children, actions, portalElementId },
   ref
 ) {
   const dialog = useRef<HTMLDialogElement>(null);
+
+  const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
 
   useImperativeHandle(ref, () => ({
     open: () => {
@@ -27,16 +37,35 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
     }
   };
 
+  const handleCloseModal = () => {
+    const modal = dialog.current;
+    if (modal) {
+      modal.close();
+    }
+  };
+
+  useEffect(() => {
+    const element = document.getElementById(portalElementId);
+    setTargetElement(element);
+  }, [portalElementId]);
+
+  if (!targetElement) return null;
+
   return createPortal(
     <dialog ref={dialog} className={styles.modal} onClick={handleBackdropClick}>
       <Card className={styles['modal-cart']}>
+        <Button
+          variant="link"
+          className={styles['close-modal']}
+          onClick={handleCloseModal}
+        >
+          <IoIosCloseCircleOutline />
+        </Button>
         <CardHeader>
           <h2>{title}</h2>
         </CardHeader>
 
-        <CardContent>
-          <p>{description}</p>
-        </CardContent>
+        <CardContent>{children}</CardContent>
 
         <CardFooter>
           <form method="dialog" className={styles['modal-actions']}>
@@ -45,6 +74,6 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
         </CardFooter>
       </Card>
     </dialog>,
-    document.getElementById('modal-root') as HTMLElement
+    targetElement as HTMLElement
   );
 });

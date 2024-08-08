@@ -14,29 +14,29 @@ $primary-700: #990000;
 $primary-800: #800000;
 $primary-900: #660000;
 
-$secondary-color: #004d00;
+$accent-color: #004d00;
 
-$secondary-100: #004c00;
-$secondary-200: #003f00;
-$secondary-300: #003300;
-$secondary-400: #002600;
-$secondary-500: #001a00;
-$secondary-600: #001000;
-$secondary-700: #000a00;
-$secondary-800: #000600;
-$secondary-900: #000200;
+$accent-100: #004c00;
+$accent-200: #003f00;
+$accent-300: #003300;
+$accent-400: #002600;
+$accent-500: #001a00;
+$accent-600: #001000;
+$accent-700: #000a00;
+$accent-800: #000600;
+$accent-900: #000200;
 
-$accent-color: #f6c1c1;
+$secondary-color: #f6c1c1;
 
-$accent-100: #f8dcdc;
-$accent-200: #f5b7b7;
-$accent-300: #f28e8e;
-$accent-400: #f06666;
-$accent-500: #e84444;
-$accent-600: #d93030;
-$accent-700: #c92020;
-$accent-800: #b51010;
-$accent-900: #a00000;
+$secondary-100: #f8dcdc;
+$secondary-200: #f5b7b7;
+$secondary-300: #f28e8e;
+$secondary-400: #f06666;
+$secondary-500: #e84444;
+$secondary-600: #d93030;
+$secondary-700: #c92020;
+$secondary-800: #b51010;
+$secondary-900: #a00000;
 $button-background: $primary-color;
 $button-text: #ffffff;
 $button-hover-background: $primary-700;
@@ -122,5 +122,27 @@ $success-box-shadow: 0 0 0 3px rgba($success-color, 0.2);
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@mixin bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
   }
 }

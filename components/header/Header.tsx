@@ -1,19 +1,17 @@
 import Image from 'next/image';
-import { LogoutButton } from '../logout-button/LogoutButton';
 import styles from './Header.module.scss';
+import { HeaderMenuItems } from './header-menu-items/HeaderMenuItems';
 
 export function Header() {
   return (
     <>
       <header className={styles.header}>
         <h1>Sip Finder</h1>
-        {/* TODO: Cocktails Basket */}
-        {/* TODO: Saved Cocktails */}
-        <LogoutButton />
+        <HeaderMenuItems />
       </header>
       <div className={styles['main-image']}>
         <Image
-          src="/assets/coctails.jpg"
+          src="/assets/cocktails.jpg"
           alt="A table full of delicious cocktails"
           width={1920}
           height={1080}
