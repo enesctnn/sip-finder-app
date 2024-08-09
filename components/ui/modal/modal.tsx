@@ -68,7 +68,11 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
         <CardContent>{children}</CardContent>
 
         <CardFooter>
-          <form method="dialog" className={styles['modal-actions']}>
+          <form
+            name="modal-close-form"
+            method="dialog"
+            className={styles['modal-actions']}
+          >
             {actions}
           </form>
         </CardFooter>

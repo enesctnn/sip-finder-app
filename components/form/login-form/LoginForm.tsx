@@ -2,10 +2,10 @@
 
 import { Button } from '@/components/ui/button/button';
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
 } from '@/components/ui/card/Card';
 import { Input } from '@/components/ui/input/input';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
@@ -79,7 +79,7 @@ export function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} method="POST">
+    <form name="login-form" onSubmit={handleSubmit(onSubmit)} method="POST">
       <Card className={styles.card}>
         <CardHeader>
           <h1 className={styles.title}>

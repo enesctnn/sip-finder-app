@@ -53,7 +53,11 @@ export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
         className={styles.modal}
       >
         <div className={styles['header-menu-content']}>
-          <form method="dialog" className={styles['close-modal-form']}>
+          <form
+            name="mobile-modal-close-form"
+            method="dialog"
+            className={styles['close-modal-form']}
+          >
             <Button
               type="submit"
               variant="link"

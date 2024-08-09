@@ -24,6 +24,7 @@ export function SearchCocktail({ searchTerm, onChange }: SearchCocktailProps) {
           placeholder="Search for a Cocktail"
           value={searchTerm}
           onChange={onChange}
+          id="search-cocktail"
         />
       </CardContent>
       <CardFooter className={styles.footer}>

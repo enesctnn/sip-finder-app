@@ -27,7 +27,11 @@ export function LogoutButton() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles['logout-form']}>
+    <form
+      name="logout-form"
+      onSubmit={handleSubmit}
+      className={styles['logout-form']}
+    >
       <Button type="submit" variant="ghost">
         <RiLogoutCircleLine />
         Logout
