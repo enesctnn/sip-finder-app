@@ -9,7 +9,7 @@ export async function POST() {
     const token = cookies().get('auth-token')?.value;
 
     if (!token) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json(null);
     }
 
     const user = dummyUsers.find(user => user.token === token);

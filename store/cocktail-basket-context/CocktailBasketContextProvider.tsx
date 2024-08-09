@@ -1,9 +1,10 @@
 'use client';
 
-import { Cocktail } from '@/@types/api/SearchCocktailsByNameResponseType';
+import { Cocktail } from '@/@types/api/TheCocktailsDbResponseTypes';
 import { CocktailBasketContextType } from '@/@types/CocktailBasketContext';
 import { useContext, useState } from 'react';
 import {
+  CocktailBasketCleanerContext,
   CocktailBasketContext,
   CocktailBasketSetterContext,
 } from './cocktailBasketContext';
@@ -30,10 +31,14 @@ export function CocktailBasketContextProvider({
     });
   };
 
+  const handleCleanBasket = () => setCocktailBasket({});
+
   return (
     <CocktailBasketContext.Provider value={cocktailBasket}>
       <CocktailBasketSetterContext.Provider value={handleToggleCocktailBasket}>
-        {children}
+        <CocktailBasketCleanerContext.Provider value={handleCleanBasket}>
+          {children}
+        </CocktailBasketCleanerContext.Provider>
       </CocktailBasketSetterContext.Provider>
     </CocktailBasketContext.Provider>
   );
@@ -54,6 +59,15 @@ export function useBasketSetterContext(): (cocktail: Cocktail) => void {
   if (context === undefined) {
     throw new Error(
       'useBasketSetterContext must be used within a CocktailBasketContextProvider'
+    );
+  }
+  return context;
+}
+export function useBasketCleanerContext(): () => void {
+  const context = useContext(CocktailBasketCleanerContext);
+  if (context === undefined) {
+    throw new Error(
+      'useBasketCleanerContext must be used within a CocktailBasketCleanerContextProvider'
     );
   }
   return context;

@@ -2,33 +2,53 @@
 
 import { ModalHandle } from '@/@types/components/modal';
 import {
-  useBasketContext,
-  useBasketSetterContext,
+	useBasketCleanerContext,
+	useBasketContext,
+	useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
+import { useUserContext } from '@/store/user-context/UserContextProvider';
+import { postCocktails } from '@/utils/postCocktails';
+import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
 import { Button } from '../ui/button/button';
 import { Modal } from '../ui/modal/modal';
 import { BasketItem } from './basket-item/BasketItem';
 import styles from './CocktailBasket.module.scss';
+import { EmptyBasketFeedback } from './feedback/empty-basket-feedback/EmptyBasketFeedback';
+import { FeedbackMessage } from './feedback/muation-feedback/FeedbackMessage';
 import { OpenBasketButton } from './open-basket-button/OpenBasketButton';
-import { saveBasketToLocalStorage } from '@/utils/setBasketLocalStorage';
 
 export function CocktailBasket() {
   const dialog = useRef<ModalHandle>(null);
 
   const basket = useBasketContext();
+  const cocktailKeys = Object.keys(basket);
 
-  const basketKeys = Object.keys(basket);
+  const user = useUserContext();
+  const cleanBasket = useBasketCleanerContext();
+  const toggleCocktailBasket = useBasketSetterContext();
+
+  const {
+    mutate: saveCocktails,
+    isPending,
+    isError,
+    isSuccess,
+  } = useMutation({
+    mutationFn: () => postCocktails(cocktailKeys, user!.email),
+    onSuccess: () => cleanBasket(),
+  });
 
   const actions = (
     <>
-      {basketKeys.length > 0 && (
+      {cocktailKeys.length > 0 && (
         <Button
           type="button"
           variant="secondary"
-          onClick={() => saveBasketToLocalStorage(basketKeys)}
+          onClick={async () => {
+            saveCocktails();
+          }}
         >
-          Save all cocktails
+          {isPending ? 'Saving the cocktails...' : 'Save all cocktails'}
         </Button>
       )}
       <Button type="submit" variant="link">
@@ -44,12 +64,10 @@ export function CocktailBasket() {
     }
   };
 
-  const toggleCocktailBasket = useBasketSetterContext();
-
   return (
     <>
       <OpenBasketButton
-        basketCount={basketKeys.length}
+        basketCount={cocktailKeys.length}
         handleOpenModal={handleOpenModal}
       />
 
@@ -59,11 +77,10 @@ export function CocktailBasket() {
         actions={actions}
         portalElementId="cocktail-basket-modal"
       >
-        {basketKeys.length > 0 && (
+        {cocktailKeys.length > 0 && (
           <ul className={styles['basket-list']}>
-            {basketKeys.map(id => {
+            {cocktailKeys.map(id => {
               const cocktail = basket[id];
-
               return (
                 <BasketItem
                   key={cocktail.idDrink}
@@ -77,16 +94,25 @@ export function CocktailBasket() {
             })}
           </ul>
         )}
-        {basketKeys.length <= 0 && (
-          <>
-            <h2 className={styles['empty-basket-title']}>
-              Your basket is empty.
-            </h2>
-            <p>
-              You can fill your basket with the cocktails you want and store
-              them for later.
-            </p>
-          </>
+
+        {cocktailKeys.length <= 0 && <EmptyBasketFeedback />}
+
+        {isPending && (
+          <FeedbackMessage success={true} message="Clearing your basket..." />
+        )}
+
+        {isSuccess && (
+          <FeedbackMessage
+            success={true}
+            message="Cocktails saved successfully!"
+          />
+        )}
+
+        {isError && (
+          <FeedbackMessage
+            error
+            message="An error occurred while saving cocktails."
+          />
         )}
       </Modal>
     </>

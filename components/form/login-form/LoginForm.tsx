@@ -2,10 +2,10 @@
 
 import { Button } from '@/components/ui/button/button';
 import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
 } from '@/components/ui/card/Card';
 import { Input } from '@/components/ui/input/input';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
@@ -19,6 +19,7 @@ import { FormError } from '../form-error/FormError';
 import { FormMessage } from '../form-message/FormMessage';
 import { FormSuccess } from '../form-success/FormSuccess';
 import styles from './LoginForm.module.scss';
+import { useUserSetterContext } from '@/store/user-context/UserContextProvider';
 
 const defaultValues = {
   email: '',
@@ -30,6 +31,8 @@ export function LoginForm() {
   const [success, setSuccess] = useState<boolean>(false);
 
   const router = useRouter();
+
+  const updateUser = useUserSetterContext();
 
   const {
     handleSubmit,
@@ -66,6 +69,7 @@ export function LoginForm() {
       });
       if (response.ok) {
         setSuccess(true);
+        updateUser();
         router.push(DEFAULT_LOGIN_REDIRECT);
       } else {
         const { message } = await response.json();

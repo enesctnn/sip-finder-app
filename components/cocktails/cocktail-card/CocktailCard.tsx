@@ -1,4 +1,4 @@
-import { Cocktail } from '@/@types/api/SearchCocktailsByNameResponseType';
+import { Cocktail } from '@/@types/api/TheCocktailsDbResponseTypes';
 import {
   Card,
   CardContent,

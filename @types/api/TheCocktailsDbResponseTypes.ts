@@ -2,13 +2,13 @@ export type Cocktail = {
   idDrink: string;
   strDrink: string;
   strDrinkAlternate: string | null;
-  strTags: string;
+  strTags: string | null;
   strVideo: string | null;
   strCategory: string;
   strIBA: string;
   strAlcoholic: string;
   strGlass: string;
-  strInstructions: string;
+  strInstructions: string | null;
   strInstructionsES: string | null;
   strInstructionsDE: string;
   strInstructionsFR: string | null;
@@ -17,9 +17,9 @@ export type Cocktail = {
   strInstructionsZH_HANT: string | null;
   strDrinkThumb: string;
   strIngredient1: string;
-  strIngredient2: string;
-  strIngredient3: string;
-  strIngredient4: string;
+  strIngredient2: string | null;
+  strIngredient3: string | null;
+  strIngredient4: string | null;
   strIngredient5: string | null;
   strIngredient6: string | null;
   strIngredient7: string | null;
@@ -46,12 +46,16 @@ export type Cocktail = {
   strMeasure13: string | null;
   strMeasure14: string | null;
   strMeasure15: string | null;
-  strImageSource: string;
-  strImageAttribution: string;
-  strCreativeCommonsConfirmed: string;
+  strImageSource: string | null;
+  strImageAttribution: string | null;
+  strCreativeCommonsConfirmed: string | null;
   dateModified: string;
 };
 
 export type SearchCocktailsByNameResponseType = {
+  drinks: Cocktail[];
+};
+
+export type SearchCocktailByIdResponseType = {
   drinks: Cocktail[];
 };

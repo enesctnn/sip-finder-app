@@ -1,22 +1,22 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { Button } from '../ui/button/button';
-import { RiLogoutCircleLine } from 'react-icons/ri';
-import styles from './LogoutButton.module.scss';
 import { useUserSetterContext } from '@/store/user-context/UserContextProvider';
+import { useRouter } from 'next/navigation';
+import { RiLogoutCircleLine } from 'react-icons/ri';
+import { Button } from '../ui/button/button';
+import styles from './LogoutButton.module.scss';
 
 export function LogoutButton() {
   const router = useRouter();
 
-  const setUser = useUserSetterContext();
+  const updateUser = useUserSetterContext();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const response = await fetch('/api/auth/logout', { method: 'POST' });
       if (response.ok) {
-        setUser(null);
+        updateUser();
         router.push('/');
       } else {
         console.error('Logout failed');
@@ -25,6 +25,8 @@ export function LogoutButton() {
       console.error('An error occurred:', error);
     }
   };
+
+  // TODO: add logout feedbacks...
 
   return (
     <form

@@ -1,4 +1,5 @@
 import {
+  CocktailBasketCleanerContextType,
   CocktailBasketContextType,
   CocktailBasketSetterContextType,
 } from '@/@types/CocktailBasketContext';
@@ -9,3 +10,6 @@ export const CocktailBasketContext =
 
 export const CocktailBasketSetterContext =
   React.createContext<CocktailBasketSetterContextType>(() => {});
+
+export const CocktailBasketCleanerContext =
+  React.createContext<CocktailBasketCleanerContextType>(() => {});

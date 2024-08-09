@@ -11,23 +11,24 @@ export const UserContextProvider = ({
 }) => {
   const [userSlice, setUserSlice] = useState<null | Omit<User, 'token'>>(null);
 
+  const updateUser = async () => {
+    try {
+      const res = await fetch('/api/auth/me', { method: 'POST' });
+      if (!res.ok) return;
+      const data = await res.json();
+      setUserSlice(data);
+    } catch (error) {
+      console.log('Failed to get user details:', error);
+    }
+  };
+
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await fetch('/api/auth/me', { method: 'POST' });
-        if (!res.ok) return;
-        const data = await res.json();
-        setUserSlice(data);
-      } catch (error) {
-        console.log('Failed to get user details:', error);
-      }
-    };
-    getUser();
+    updateUser();
   }, []);
 
   return (
     <UserContext.Provider value={userSlice}>
-      <UserSetterContext.Provider value={setUserSlice}>
+      <UserSetterContext.Provider value={updateUser}>
         {children}
       </UserSetterContext.Provider>
     </UserContext.Provider>
