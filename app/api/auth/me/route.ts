@@ -1,11 +1,12 @@
 'use server';
 
-import { NextRequest, NextResponse } from 'next/server';
 import { dummyUsers } from '@/utils/dummyUser';
+import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function POST() {
   try {
-    const token = request.cookies.get('auth-token')?.value;
+    const token = cookies().get('auth-token')?.value;
 
     if (!token) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });

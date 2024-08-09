@@ -1,7 +1,7 @@
 'use server';
 
-import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { dummyUsers } from '@/utils/dummyUser';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -19,17 +19,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = NextResponse.redirect(
-      new URL(DEFAULT_LOGIN_REDIRECT, request.nextUrl)
-    );
-
-    response.cookies.set('auth-token', matchingUser.token, {
+    cookies().set('auth-token', matchingUser.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       expires: new Date(Date.now() + 3600 * 1000),
     });
 
-    return await response;
+    return NextResponse.json({ message: 'Login successful!' }, { status: 200 });
   } catch (error) {
     console.error('Error processing login request:', error);
     return NextResponse.json(

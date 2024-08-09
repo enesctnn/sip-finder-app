@@ -66,9 +66,7 @@ export function LoginForm() {
       });
       if (response.ok) {
         setSuccess(true);
-        if (response.redirected) {
-          router.push(DEFAULT_LOGIN_REDIRECT);
-        }
+        router.push(DEFAULT_LOGIN_REDIRECT);
       } else {
         const { message } = await response.json();
         setError(message || 'Login failed. Please try again.');
