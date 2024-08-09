@@ -1,8 +1,11 @@
 .menu {
-  display: flex !important;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  ul {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    list-style: none;
+  }
 }
 
 @media (max-width: 768px) {

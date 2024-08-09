@@ -1,3 +1,4 @@
+import { HomeButton } from '@/components/home-button/HomeButton';
 import {
   Card,
   CardContent,
@@ -5,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card/Card';
-import { LinkButton } from '@/components/ui/link-button/link-button';
 import Image from 'next/image';
 import styles from './page.module.scss';
 
@@ -29,9 +29,7 @@ export default function Home() {
           Log in to get started on your flavor adventure!
         </CardContent>
         <CardFooter>
-          <LinkButton href="/auth/login" variant="link">
-            Login
-          </LinkButton>
+          <HomeButton />
         </CardFooter>
       </Card>
     </div>

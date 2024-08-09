@@ -11,6 +11,7 @@ import { Modal } from '../ui/modal/modal';
 import { BasketItem } from './basket-item/BasketItem';
 import styles from './CocktailBasket.module.scss';
 import { OpenBasketButton } from './open-basket-button/OpenBasketButton';
+import { saveBasketToLocalStorage } from '@/utils/setBasketLocalStorage';
 
 export function CocktailBasket() {
   const dialog = useRef<ModalHandle>(null);
@@ -25,9 +26,7 @@ export function CocktailBasket() {
         <Button
           type="button"
           variant="secondary"
-          onClick={() => {
-            // TODO: save the cocktail id's from basket to saved cocktails
-          }}
+          onClick={() => saveBasketToLocalStorage(basketKeys)}
         >
           Save all cocktails
         </Button>

@@ -14,6 +14,7 @@ import styles from './MobileHeaderModal.module.scss';
 import { CocktailBasket } from '@/components/cocktail-basket/CocktailBasket';
 import { LogoutButton } from '@/components/logout-button/LogoutButton';
 import { createPortal } from 'react-dom';
+import { OpenSavedCocktailsButton } from '@/components/saved-cocktails/open-saved-cocktails-button/OpenSavedCocktailsButton';
 
 export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
   function MobileHeaderModal({}, ref) {
@@ -61,10 +62,19 @@ export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
               <IoMdClose size={26} />
             </Button>
           </form>
-          <ul className={styles['header-menu-items']}>
-            <CocktailBasket />
-            <LogoutButton />
-          </ul>
+          <nav>
+            <ul className={styles['header-menu-items']}>
+              <li>
+                <OpenSavedCocktailsButton />
+              </li>
+              <li>
+                <CocktailBasket />
+              </li>
+              <li>
+                <LogoutButton />
+              </li>
+            </ul>
+          </nav>
         </div>
       </dialog>,
       targetElement

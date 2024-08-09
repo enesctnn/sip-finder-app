@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { LinkButton } from '../ui/link-button/link-button';
 import styles from './Header.module.scss';
 import { HeaderMenuItems } from './header-menu-items/HeaderMenuItems';
 import { MobileHeaderMenu } from './mobile-header-menu/MobileHeaderMenu';
@@ -7,7 +8,9 @@ export function Header() {
   return (
     <>
       <header className={styles.header}>
-        <h1>Sip Finder</h1>
+        <LinkButton href="/cocktails">
+          <h1>Sip Finder</h1>
+        </LinkButton>
         <HeaderMenuItems />
         <MobileHeaderMenu />
       </header>
