@@ -1,6 +1,5 @@
 import {
   Cocktail,
-  SearchCocktailByIdResponseType,
   SearchCocktailsByNameResponseType,
 } from '@/@types/api/TheCocktailsDbResponseTypes';
 import axios from 'axios';

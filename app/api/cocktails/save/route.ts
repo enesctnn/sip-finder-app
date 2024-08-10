@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     const updatedSavedCocktails = {
       ...prevSavedCocktails,
-      [user_email]: [...newCocktails],
+      [user_email]: [...matchingUserSavedCocktails, ...newCocktails],
     };
 
     cookies().set('saved-cocktails', JSON.stringify(updatedSavedCocktails), {
