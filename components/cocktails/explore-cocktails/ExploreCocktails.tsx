@@ -3,8 +3,9 @@
 import { ChangeEvent, useState } from 'react';
 import { CocktailsList } from './cocktails-list/CocktailsList';
 import { SearchCocktail } from './search-cocktail/SearchCocktail';
+import { ExploreCocktailsProps } from '@/@types/components/ExploreCocktails';
 
-export function ExploreCocktails() {
+export function ExploreCocktails({ initialCocktails }: ExploreCocktailsProps) {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -13,7 +14,10 @@ export function ExploreCocktails() {
   return (
     <>
       <SearchCocktail searchTerm={searchTerm} onChange={onChange} />
-      <CocktailsList searchTerm={searchTerm} />
+      <CocktailsList
+        searchTerm={searchTerm}
+        initialCocktails={initialCocktails}
+      />
     </>
   );
 }
