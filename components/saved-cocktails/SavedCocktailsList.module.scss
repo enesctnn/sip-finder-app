@@ -1,3 +1,9 @@
+.container {
+  width: 90%;
+  max-width: 60rem;
+  margin: 0 auto 40px auto;
+}
+
 .saved-cocktails-list {
   list-style: none;
   display: flex;
@@ -6,4 +12,5 @@
   gap: 14px;
   justify-content: center;
   align-items: center;
+  justify-items: center;
 }

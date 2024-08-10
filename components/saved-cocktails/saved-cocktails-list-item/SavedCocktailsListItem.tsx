@@ -1,15 +1,17 @@
-import { Cocktail } from '@/@types/api/TheCocktailsDbResponseTypes';
+import { SavedCocktailsListItemProps } from '@/@types/components/SavedCocktailsListItem';
 import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
 } from '@/components/ui/card/Card';
 import Image from 'next/image';
 import { RemoveSavedCocktailButton } from '../remove-saved-cocktail-button/RemoveSavedCocktailButton';
 import styles from './SavedCocktailsListItem.module.scss';
 
-export function SavedCocktailsListItem({ cocktail }: { cocktail: Cocktail }) {
+export function SavedCocktailsListItem({
+  cocktail,
+}: SavedCocktailsListItemProps) {
   return (
     <li className={styles['saved-cocktail']}>
       <Image
@@ -79,7 +81,7 @@ export function SavedCocktailsListItem({ cocktail }: { cocktail: Cocktail }) {
           </article>
         </CardContent>
         <CardFooter className={styles.footer}>
-          <RemoveSavedCocktailButton cocktailId={cocktail.idDrink}  />
+          <RemoveSavedCocktailButton cocktailId={cocktail.idDrink} />
         </CardFooter>
       </Card>
     </li>

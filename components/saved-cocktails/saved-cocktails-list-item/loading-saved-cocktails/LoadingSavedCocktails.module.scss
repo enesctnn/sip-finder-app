@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+}
+
+.image {
+  width: 80%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
