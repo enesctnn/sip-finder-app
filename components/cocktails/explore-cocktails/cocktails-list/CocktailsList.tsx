@@ -6,7 +6,7 @@ import { CocktailCard } from '../../cocktail-card/CocktailCard';
 import { CocktailStatus } from './cocktail-status/CocktailStatus';
 import styles from './CocktailsList.module.scss';
 
-export function CocktailsList({ searchTerm }: { searchTerm: string }) {
+export function CocktailsList({ searchTerm = '' }: { searchTerm: string }) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['search-cocktails', searchTerm],
     queryFn: () => fetchCocktailsByName(searchTerm),

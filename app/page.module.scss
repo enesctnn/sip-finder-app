@@ -2,6 +2,10 @@
   @include ellipse_gradient($primary-900 50%, $primary-color);
   place-content: center;
   @include fullscreen;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -36,5 +40,18 @@
   img {
     object-fit: cover;
     object-position: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 85%;
+    .header {
+      font-size: 28px;
+    }
+    .content {
+      padding: 5px 0;
+      font-size: 14px;
+    }
   }
 }

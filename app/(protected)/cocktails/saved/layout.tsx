@@ -6,6 +6,9 @@ export default function SavedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SavedCocktailsContextProvider>{children}</SavedCocktailsContextProvider>
+    <SavedCocktailsContextProvider>
+      <div id="confirm-remove-saved-cocktail-modal" />
+      {children}
+    </SavedCocktailsContextProvider>
   );
 }

@@ -1,9 +1,9 @@
 import {
-  Cocktail,
-  SearchCocktailsByNameResponseType,
+	Cocktail,
+	SearchCocktailsByNameResponseType,
 } from '@/@types/api/TheCocktailsDbResponseTypes';
 import axios from 'axios';
-import { endPoints } from './endPoints';
+import { Endpoints } from './endPoints';
 
 const BASE_URL = process.env.NEXT_PUBLIC_THE_COCKTAIL_DB_URL;
 
@@ -12,15 +12,17 @@ axios.defaults.baseURL = BASE_URL;
 export const fetchCocktailsByName = async (
   searchTerm: string
 ): Promise<SearchCocktailsByNameResponseType> => {
-  const res = await axios.get(endPoints.searchCocktailsByName + searchTerm);
+  const res = await axios.get(Endpoints.SearchCocktails, {
+    params: { s: searchTerm },
+  });
   return res.data;
 };
 
 export const fetchCocktailById = async (id: string): Promise<Cocktail> => {
   try {
-    const res = await axios.get(
-      `${endPoints.lookUpFullCocktailDetailsById}${id}`
-    );
+    const res = await axios.get(Endpoints.CocktailDetails, {
+      params: { i: id },
+    });
     return res.data.drinks[0];
   } catch (error) {
     console.error('Error fetching cocktail by ID:', error);

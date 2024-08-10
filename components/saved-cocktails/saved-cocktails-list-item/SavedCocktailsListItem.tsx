@@ -81,7 +81,10 @@ export function SavedCocktailsListItem({
           </article>
         </CardContent>
         <CardFooter className={styles.footer}>
-          <RemoveSavedCocktailButton cocktailId={cocktail.idDrink} />
+          <RemoveSavedCocktailButton
+            cocktailName={cocktail.strDrink}
+            cocktailId={cocktail.idDrink}
+          />
         </CardFooter>
       </Card>
     </li>
