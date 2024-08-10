@@ -2,11 +2,11 @@
 
 ## Overview
 
-This project is a sip finder app built with Next.js 14 using the App Router. It allows users to search for cocktails, save their favorites, and view saved cocktails. The application also includes a login page to protect access to the cocktail pages with dummy users.
+This project is a sip finder app built with Next.js 14 using the App Router. It allows users to search for cocktails,add to cocktail basket, save/remove their favorites, and view saved cocktails. The application also includes a login page to protect access to the cocktail pages with dummy users.
 
 ## Features
 
-1. **Cocktail Search Page**: 
+1. **Cocktail Search Page**:
    - A search bar to find cocktails by name.
    - Display search results with cards.
    - Each card includes a button to add the cocktail to a basket.
@@ -21,6 +21,14 @@ This project is a sip finder app built with Next.js 14 using the App Router. It 
 3. **Login Page**:
    - A login page with a dummy user.
    - Redirects users to the auth page if they try to access cocktail pages without being logged in.
+
+4. **Middleware for Authentication and Authorization**:
+   - **API Authentication**: Middleware checks for routes that require authentication and handles API requests accordingly.
+   - **Authentication Protection**: Routes defined as authentication-required are protected, redirecting logged-in users away from the login page and ensuring only authenticated users can access protected pages.
+   - **Public Routes**: Public routes are accessible without authentication.
+   - **Redirection**: Users are redirected to the login page if they attempt to access protected routes without being logged in. Authenticated users are redirected away from the login page if they attempt to access it.
+
+---
 
 ## Getting Started
 
@@ -89,19 +97,42 @@ npm start
 yarn start
 ```
 
-### Deployment
+## Deployment
 
-To deploy the application on Vercel, follow these steps:
+The Sip Finder App is deployed on Vercel. You can access the live application at [https://sip-finder-app.vercel.app/](https://sip-finder-app.vercel.app/).
 
-1. Push your code to GitHub.
-2. Sign in to Vercel and import your project from GitHub.
-3. Configure build settings and environment variables if needed.
-4. Deploy your project.
+---
 
 ## Development Notes
 
 - **Styling**: The project uses SASS for styling. CSS Modules are also implemented.
 - **Routing**: Routes are managed in `routes.ts` with appropriate middleware for authentication and authorization.
+
+---
+
+## Dependencies
+
+- **[@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)** [![npm](https://img.shields.io/npm/v/@hookform/resolvers)](https://www.npmjs.com/package/@hookform/resolvers)
+- **[@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query)** [![npm](https://img.shields.io/npm/v/@tanstack/react-query)](https://www.npmjs.com/package/@tanstack/react-query)
+- **[axios](https://www.npmjs.com/package/axios)** [![npm](https://img.shields.io/npm/v/axios)](https://www.npmjs.com/package/axios)
+- **[next](https://www.npmjs.com/package/next)** [![npm](https://img.shields.io/npm/v/next)](https://www.npmjs.com/package/next)
+- **[react](https://www.npmjs.com/package/react)** [![npm](https://img.shields.io/npm/v/react)](https://www.npmjs.com/package/react)
+- **[react-dom](https://www.npmjs.com/package/react-dom)** [![npm](https://img.shields.io/npm/v/react-dom)](https://www.npmjs.com/package/react-dom)
+- **[react-hook-form](https://www.npmjs.com/package/react-hook-form)** [![npm](https://img.shields.io/npm/v/react-hook-form)](https://www.npmjs.com/package/react-hook-form)
+- **[react-icons](https://www.npmjs.com/package/react-icons)** [![npm](https://img.shields.io/npm/v/react-icons)](https://www.npmjs.com/package/react-icons)
+- **[zod](https://www.npmjs.com/package/zod)** [![npm](https://img.shields.io/npm/v/zod)](https://www.npmjs.com/package/zod)
+
+## DevDependencies
+
+- **[@types/node](https://www.npmjs.com/package/@types/node)** [![npm](https://img.shields.io/npm/v/@types/node)](https://www.npmjs.com/package/@types/node)
+- **[@types/react](https://www.npmjs.com/package/@types/react)** [![npm](https://img.shields.io/npm/v/@types/react)](https://www.npmjs.com/package/@types/react)
+- **[@types/react-dom](https://www.npmjs.com/package/@types/react-dom)** [![npm](https://img.shields.io/npm/v/@types/react-dom)](https://www.npmjs.com/package/@types/react-dom)
+- **[eslint](https://www.npmjs.com/package/eslint)** [![npm](https://img.shields.io/npm/v/eslint)](https://www.npmjs.com/package/eslint)
+- **[eslint-config-next](https://www.npmjs.com/package/eslint-config-next)** [![npm](https://img.shields.io/npm/v/eslint-config-next)](https://www.npmjs.com/package/eslint-config-next)
+- **[sass](https://www.npmjs.com/package/sass)** [![npm](https://img.shields.io/npm/v/sass)](https://www.npmjs.com/package/sass)
+- **[typescript](https://www.npmjs.com/package/typescript)** [![npm](https://img.shields.io/npm/v/typescript)](https://www.npmjs.com/package/typescript)
+
+---
 
 ## Contributing
 
@@ -112,6 +143,14 @@ If you'd like to contribute to this project, please fork the repository and subm
 If you have any questions or need further assistance, please contact:
 
 - **Email**: enespcetin@gmail.com
+
+Thank you for your attention to this matter.
+
+Best regards,
+
+Muhammet Enes Çetin
+
+Project Owner & Sole Developer
 
 ## License
 
