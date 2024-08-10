@@ -1,8 +1,8 @@
 'use client';
 
 import {
-  useSavedCocktailsContext,
-  useSavedCocktailsStatusContext,
+	useSavedCocktailsContext,
+	useSavedCocktailsStatusContext,
 } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
 import styles from './SavedCocktailsList.module.scss';
 import { SavedCocktailsListItem } from './saved-cocktails-list-item/SavedCocktailsListItem';
@@ -15,7 +15,7 @@ export function SavedCocktailsList() {
 
   return (
     <div className={styles.container}>
-      {savedCocktails.length > 0 && (
+      {savedCocktails.length > 0 && status !== 'pending' && (
         <ul className={styles['saved-cocktails-list']}>
           {savedCocktails.map(cocktail => (
             <SavedCocktailsListItem
