@@ -2,20 +2,21 @@
 
 import { ModalHandle } from '@/@types/components/modal';
 import {
-  useBasketCleanerContext,
-  useBasketContext,
-  useBasketSetterContext,
+	useBasketCleanerContext,
+	useBasketContext,
+	useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
+import { useSavedCocktailsSetterContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
 import { useUserContext } from '@/store/user-context/UserContextProvider';
 import { postCocktails } from '@/utils/postCocktails';
 import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
 import { Button } from '../ui/button/button';
 import { Modal } from '../ui/modal/modal';
+import { FeedbackMessage } from '../ui/muation-feedback/feedback-message';
 import { BasketItem } from './basket-item/BasketItem';
 import styles from './CocktailBasket.module.scss';
 import { EmptyBasketFeedback } from './feedback/empty-basket-feedback/EmptyBasketFeedback';
-import { FeedbackMessage } from '../ui/muation-feedback/feedback-message';
 import { OpenBasketButton } from './open-basket-button/OpenBasketButton';
 
 export function CocktailBasket() {
@@ -28,6 +29,8 @@ export function CocktailBasket() {
   const cleanBasket = useBasketCleanerContext();
   const toggleCocktailBasket = useBasketSetterContext();
 
+  const updateSavedCocktails = useSavedCocktailsSetterContext();
+
   const {
     mutate: saveCocktails,
     isPending,
@@ -35,7 +38,10 @@ export function CocktailBasket() {
     isSuccess,
   } = useMutation({
     mutationFn: () => postCocktails(cocktailKeys, user!.email),
-    onSuccess: () => cleanBasket(),
+    onSuccess: () => {
+      updateSavedCocktails();
+      cleanBasket();
+    },
   });
 
   const actions = (
