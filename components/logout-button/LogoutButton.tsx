@@ -1,6 +1,7 @@
 'use client';
 
 import { useUserSetterContext } from '@/store/user-context/UserContextProvider';
+import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 import { Button } from '../ui/button/button';
@@ -11,32 +12,32 @@ export function LogoutButton() {
 
   const updateUser = useUserSetterContext();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const response = await fetch('/api/auth/logout', { method: 'POST' });
-      if (response.ok) {
-        updateUser();
-        router.push('/');
-      } else {
-        console.error('Logout failed');
-      }
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  };
+  const {
+    mutate: logOut,
+    isPending,
+    isSuccess,
+  } = useMutation({
+    mutationFn: () => fetch('/api/auth/logout', { method: 'POST' }),
+    onSuccess: () => {
+      updateUser();
+      router.push('/');
+    },
+  });
 
-  // TODO: add logout feedbacks...
+  const handleLogoutSubmition = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await logOut();
+  };
 
   return (
     <form
       name="logout-form"
-      onSubmit={handleSubmit}
+      onSubmit={handleLogoutSubmition}
       className={styles['logout-form']}
     >
-      <Button type="submit" variant="ghost">
+      <Button type="submit" variant="ghost" disabled={isPending || isSuccess}>
         <RiLogoutCircleLine />
-        Logout
+        {isPending || isSuccess ? '...' : 'Logout'}
       </Button>
     </form>
   );

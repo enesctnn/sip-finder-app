@@ -2,7 +2,7 @@
   width: 100%;
   height: 27rem;
   display: grid;
-  grid-template-columns: 0.7fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 20px;
   background-color: $primary-900;
   padding: 0.8rem 1.2rem;
@@ -23,6 +23,8 @@
 
 .cocktail-details-card {
   border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .cocktail-article {
@@ -41,7 +43,8 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    text-align: center;
     h4 {
       opacity: 0.8;
     }
@@ -55,11 +58,15 @@
   text-transform: capitalize;
 }
 
+.footer {
+  margin-top: auto;
+}
+
 @media (max-width: 768px) {
   .saved-cocktail {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    min-height: 60rem;
+    min-height: 55rem;
     gap: 0;
 
     img {

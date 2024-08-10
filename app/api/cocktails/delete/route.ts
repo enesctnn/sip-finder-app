@@ -5,12 +5,13 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const {
-      cocktailIds,
+      cocktailId,
       user_email,
-    }: { cocktailIds: string[]; user_email: string } = await request.json();
+    }: { cocktailId: string; user_email: string } = await request.json();
 
     if (
-      !Array.isArray(cocktailIds) ||
+      typeof cocktailId !== 'string' ||
+      !cocktailId ||
       typeof user_email !== 'string' ||
       !user_email
     ) {
@@ -22,16 +23,13 @@ export async function POST(request: Request) {
     ) as SavedCocktailsType;
 
     const matchingUserSavedCocktails = prevSavedCocktails[user_email] || [];
-
-    const existingCocktailsSet = new Set(matchingUserSavedCocktails);
-
-    const newCocktails = cocktailIds.filter(
-      cocktail => !existingCocktailsSet.has(cocktail)
+    const updatedCocktails = matchingUserSavedCocktails.filter(
+      id => id !== cocktailId
     );
 
     const updatedSavedCocktails = {
       ...prevSavedCocktails,
-      [user_email]: [...newCocktails],
+      [user_email]: updatedCocktails,
     };
 
     cookies().set('saved-cocktails', JSON.stringify(updatedSavedCocktails), {
@@ -40,7 +38,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(
-      { message: 'Cocktails saved successfully!' },
+      { message: 'Cocktail removed successfully!' },
       { status: 200 }
     );
   } catch (error) {

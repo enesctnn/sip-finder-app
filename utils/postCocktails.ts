@@ -1,10 +1,10 @@
 export async function postCocktails(
-  cocktails: string[],
+  cocktailIds: string[],
   user_email: string
 ): Promise<Response> {
   const response = await fetch('/api/cocktails/save', {
     method: 'POST',
-    body: JSON.stringify({ cocktails, user_email }),
+    body: JSON.stringify({ cocktailIds, user_email }),
   });
 
   if (!response.ok) {

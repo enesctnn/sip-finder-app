@@ -2,9 +2,9 @@
 
 import { ModalHandle } from '@/@types/components/modal';
 import {
-	useBasketCleanerContext,
-	useBasketContext,
-	useBasketSetterContext,
+  useBasketCleanerContext,
+  useBasketContext,
+  useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
 import { useUserContext } from '@/store/user-context/UserContextProvider';
 import { postCocktails } from '@/utils/postCocktails';
@@ -15,7 +15,7 @@ import { Modal } from '../ui/modal/modal';
 import { BasketItem } from './basket-item/BasketItem';
 import styles from './CocktailBasket.module.scss';
 import { EmptyBasketFeedback } from './feedback/empty-basket-feedback/EmptyBasketFeedback';
-import { FeedbackMessage } from './feedback/muation-feedback/FeedbackMessage';
+import { FeedbackMessage } from '../ui/muation-feedback/feedback-message';
 import { OpenBasketButton } from './open-basket-button/OpenBasketButton';
 
 export function CocktailBasket() {
@@ -44,9 +44,8 @@ export function CocktailBasket() {
         <Button
           type="button"
           variant="secondary"
-          onClick={async () => {
-            saveCocktails();
-          }}
+          onClick={() => saveCocktails()}
+          disabled={isPending}
         >
           {isPending ? 'Saving the cocktails...' : 'Save all cocktails'}
         </Button>

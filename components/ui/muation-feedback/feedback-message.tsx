@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import styles from './FeedbackMessage.module.scss';
+import styles from './feedback-message.module.scss';
 
 interface FeedbackMessageProps {
   message: string;

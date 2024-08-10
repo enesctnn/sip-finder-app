@@ -1,13 +1,13 @@
 import { Cocktail } from '@/@types/api/TheCocktailsDbResponseTypes';
-import Image from 'next/image';
-import styles from './SavedCocktailsListItem.module.scss';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
 } from '@/components/ui/card/Card';
+import Image from 'next/image';
+import { RemoveSavedCocktailButton } from '../remove-saved-cocktail-button/RemoveSavedCocktailButton';
+import styles from './SavedCocktailsListItem.module.scss';
 
 export function SavedCocktailsListItem({ cocktail }: { cocktail: Cocktail }) {
   return (
@@ -78,7 +78,9 @@ export function SavedCocktailsListItem({ cocktail }: { cocktail: Cocktail }) {
             </article>
           </article>
         </CardContent>
-        <CardFooter></CardFooter>
+        <CardFooter className={styles.footer}>
+          <RemoveSavedCocktailButton cocktailId={cocktail.idDrink}  />
+        </CardFooter>
       </Card>
     </li>
   );
