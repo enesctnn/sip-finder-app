@@ -6,7 +6,7 @@ import {
 	useBasketContext,
 	useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
-import { useSavedCocktailsSetterContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
+import { useSavedCocktailAdditionContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
 import { useUserContext } from '@/store/user-context/UserContextProvider';
 import { postCocktails } from '@/utils/postCocktails';
 import { useMutation } from '@tanstack/react-query';
@@ -29,7 +29,7 @@ export function CocktailBasket() {
   const cleanBasket = useBasketCleanerContext();
   const toggleCocktailBasket = useBasketSetterContext();
 
-  const updateSavedCocktails = useSavedCocktailsSetterContext();
+  const addCocktails = useSavedCocktailAdditionContext();
 
   const {
     mutate: saveCocktails,
@@ -39,7 +39,10 @@ export function CocktailBasket() {
   } = useMutation({
     mutationFn: () => postCocktails(cocktailKeys, user!.email),
     onSuccess: () => {
-      updateSavedCocktails();
+      const cocktailsInBasket = cocktailKeys.map(
+        cocktailId => basket[cocktailId]
+      );
+      addCocktails(cocktailsInBasket);
       cleanBasket();
     },
   });

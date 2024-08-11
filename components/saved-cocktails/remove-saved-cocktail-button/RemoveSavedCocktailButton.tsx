@@ -4,7 +4,7 @@ import { ModalHandle } from '@/@types/components/modal';
 import { RemoveSavedCocktailButtonProps } from '@/@types/components/RemoveSavedCocktailButton';
 import { Button } from '@/components/ui/button/button';
 import { Modal } from '@/components/ui/modal/modal';
-import { useSavedCocktailsSetterContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
+import { useSavedCocktailRemovalContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
 import { useUserContext } from '@/store/user-context/UserContextProvider';
 import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
@@ -18,7 +18,7 @@ export function RemoveSavedCocktailButton({
   const user = useUserContext();
   const dialog = useRef<ModalHandle>(null);
 
-  const updateSavedCocktails = useSavedCocktailsSetterContext();
+  const removeCocktail = useSavedCocktailRemovalContext();
 
   const { mutate: removeSavedCocktail, isPending } = useMutation({
     mutationFn: () =>
@@ -26,7 +26,7 @@ export function RemoveSavedCocktailButton({
         method: 'POST',
         body: JSON.stringify({ cocktailId, user_email: user?.email }),
       }),
-    onSuccess: () => updateSavedCocktails(),
+    onSuccess: () => removeCocktail(cocktailId),
   });
 
   const actions = (
