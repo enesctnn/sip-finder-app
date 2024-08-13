@@ -1,12 +1,11 @@
-'use client';
+'use server';
 
-import { useUserContext } from '@/store/user-context/UserContextProvider';
+import { fetchUserServerSide } from '@/utils/fetchUserServerSide';
 import { LinkButton } from '../ui/link-button/link-button';
-import styles from './HomeButton.module.scss';
+import styles from './WelcomeButton.module.scss';
 
-export function HomeButton() {
-  const user = useUserContext();
-
+export async function WelcomeButton() {
+  const user = await fetchUserServerSide();
   return (
     <div className={styles['home-menu']}>
       {user && <p>Welcome back {user.username}</p>}

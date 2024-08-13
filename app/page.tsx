@@ -1,4 +1,3 @@
-import { HomeButton } from '@/components/home-button/HomeButton';
 import {
   Card,
   CardContent,
@@ -6,10 +5,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card/Card';
+import { LinkButton } from '@/components/ui/link-button/link-button';
+import { fetchUserServerSide } from '@/utils/fetchUserServerSide';
 import Image from 'next/image';
 import styles from './page.module.scss';
 
-export default function Home() {
+export default async function Home() {
+  const user = await fetchUserServerSide();
   return (
     <div className={styles.container}>
       <Card className={styles.card}>
@@ -29,7 +31,15 @@ export default function Home() {
           Log in to get started on your flavor adventure!
         </CardContent>
         <CardFooter>
-          <HomeButton />
+          <div className={styles['home-menu']}>
+            {user && <p>Welcome back {user.username}</p>}
+            <LinkButton
+              href={`${user ? '/cocktails' : '/auth/login'}`}
+              variant="link"
+            >
+              {!user ? 'Login' : `Go to cocktails`}
+            </LinkButton>
+          </div>
         </CardFooter>
       </Card>
     </div>

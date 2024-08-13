@@ -15,6 +15,7 @@ export async function POST() {
     const user = dummyUsers.find(user => user.token === token);
 
     if (!user) {
+      cookies().delete('auth-token');
       return NextResponse.json(
         { message: 'Invalid or expired token!' },
         { status: 401 }
