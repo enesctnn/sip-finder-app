@@ -1,11 +1,11 @@
-import { HomeButton } from '@/components/home-button/HomeButton';
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
 } from '@/components/ui/card/Card';
+import { WelcomeButton } from '@/components/welcome-button/WelcomeButton';
 import Image from 'next/image';
 import styles from './page.module.scss';
 
@@ -29,7 +29,7 @@ export default function Home() {
           Log in to get started on your flavor adventure!
         </CardContent>
         <CardFooter>
-          <HomeButton />
+          <WelcomeButton />
         </CardFooter>
       </Card>
     </div>

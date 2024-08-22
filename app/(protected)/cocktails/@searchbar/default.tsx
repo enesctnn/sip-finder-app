@@ -1,31 +1,20 @@
+import { SearchCocktail } from '@/components/cocktails/search-cocktail/SearchCocktail';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from '@/components/ui/card/Card';
-import { Input } from '@/components/ui/input/input';
-import { ChangeEvent } from 'react';
-import styles from './SearchCocktail.module.scss';
+import styles from './default.module.scss';
 
-type SearchCocktailProps = {
-  searchTerm: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-export function SearchCocktail({ searchTerm, onChange }: SearchCocktailProps) {
+export default function SearchBarPage() {
   return (
     <Card className={styles.card}>
       <CardHeader>
         <h1>Discover Your Favorite Cocktails</h1>
       </CardHeader>
       <CardContent>
-        <Input
-          placeholder="Search for a Cocktail"
-          value={searchTerm}
-          onChange={onChange}
-          id="search-cocktail"
-        />
+        <SearchCocktail />
       </CardContent>
       <CardFooter className={styles.footer}>
         <p>
