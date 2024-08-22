@@ -1,5 +1,3 @@
-'use server';
-
 import { fetchUserServerSide } from '@/utils/fetchUserServerSide';
 import { LinkButton } from '../ui/link-button/link-button';
 import styles from './WelcomeButton.module.scss';

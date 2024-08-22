@@ -5,7 +5,7 @@ import styles from './OpenSavedCocktailsButton.module.scss';
 export function OpenSavedCocktailsButton() {
   return (
     <LinkButton
-      href="/cocktails/saved"
+      href="/saved-cocktails"
       className={styles['saved-cocktails-link']}
       variant="link"
     >
