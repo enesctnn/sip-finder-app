@@ -5,8 +5,8 @@ import { ModalHandle } from '@/@types/components/modal';
 import { Button } from '@/components/ui/button/button';
 import { Modal } from '@/components/ui/modal/modal';
 import {
-	useBasketContext,
-	useBasketSetterContext,
+  useBasketContext,
+  useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
 import { useRef } from 'react';
 import { LiaCocktailSolid } from 'react-icons/lia';
@@ -66,6 +66,7 @@ export function AddToCocktailBasketButton({
         ref={dialog}
         title="Add to Cocktail Basket"
         actions={actions}
+        key={cocktail.idDrink}
       >
         Are you sure you want to add {cocktail.strDrink} to basket?
       </Modal>

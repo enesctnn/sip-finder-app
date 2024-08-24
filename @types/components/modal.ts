@@ -7,4 +7,5 @@ export interface ModalProps {
 
 export interface ModalHandle {
   open: () => void;
+  close: () => void;
 }

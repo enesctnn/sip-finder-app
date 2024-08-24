@@ -28,12 +28,13 @@ export async function login(
     return { errors };
   }
 
+  cookies().set('auth-token', matchingUser!.token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    expires: new Date(Date.now() + 3600 * 1000),
+  });
+	
   try {
-    cookies().set('auth-token', matchingUser!.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      expires: new Date(Date.now() + 3600 * 1000),
-    });
     revalidatePath('/', 'layout');
     redirect('/cocktails');
   } catch (err) {

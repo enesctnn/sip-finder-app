@@ -75,7 +75,11 @@ export function CocktailBasket() {
                 );
               })}
             </ul>
-            <form action={formAction} className={styles['save-cocktails-form']}>
+            <form
+              name="save-cocktail-form"
+              action={formAction}
+              className={styles['save-cocktails-form']}
+            >
               {cocktailKeys.map(key => (
                 <input hidden name={key} key={key} defaultValue={key} />
               ))}

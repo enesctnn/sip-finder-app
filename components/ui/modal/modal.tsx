@@ -29,6 +29,12 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
         modal.showModal();
       }
     },
+    close: () => {
+      const modal = dialog.current;
+      if (modal) {
+        modal.close();
+      }
+    },
   }));
 
   const handleBackdropClick = (event: React.MouseEvent) => {

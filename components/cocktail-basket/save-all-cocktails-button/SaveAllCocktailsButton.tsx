@@ -11,7 +11,7 @@ export default function SaveAllCocktailsButton() {
 
   useEffect(() => {
     if (pending) clearBasket();
-  }, [pending]);
+  }, [pending, clearBasket]);
 
   return (
     <Button variant="secondary">

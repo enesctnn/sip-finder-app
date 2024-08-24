@@ -5,8 +5,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export async function logout() {
+  cookies().delete('auth-token');
   try {
-    cookies().delete('auth-token');
     revalidatePath('/', 'layout');
     redirect('/');
   } catch (err) {

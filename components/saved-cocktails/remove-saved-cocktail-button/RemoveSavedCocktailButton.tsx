@@ -2,12 +2,11 @@
 
 import { ModalHandle } from '@/@types/components/modal';
 import { RemoveSavedCocktailButtonProps } from '@/@types/components/RemoveSavedCocktailButton';
+import { deleteSavedCocktail } from '@/actions/cocktails';
 import { Button } from '@/components/ui/button/button';
 import { Modal } from '@/components/ui/modal/modal';
-import { useSavedCocktailRemovalContext } from '@/store/saved-cocktails-context/SavedCocktailsContextProvider';
-import { useUserContext } from '@/store/user-context/UserContextProvider';
-import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
+import { useFormState } from 'react-dom';
 import { RiBookmark3Line } from 'react-icons/ri';
 import styles from './RemoveSavedCocktailButton.module.scss';
 
@@ -15,29 +14,10 @@ export function RemoveSavedCocktailButton({
   cocktailId,
   cocktailName,
 }: RemoveSavedCocktailButtonProps) {
-  const user = useUserContext();
   const dialog = useRef<ModalHandle>(null);
-
-  const removeCocktail = useSavedCocktailRemovalContext();
-
-  const { mutate: removeSavedCocktail, isPending } = useMutation({
-    mutationFn: () =>
-      fetch('/api/cocktails/delete', {
-        method: 'POST',
-        body: JSON.stringify({ cocktailId, user_email: user?.email }),
-      }),
-    onSuccess: () => removeCocktail(cocktailId),
-  });
 
   const actions = (
     <>
-      <Button
-        type="submit"
-        variant="secondary"
-        onClick={() => removeSavedCocktail()}
-      >
-        Confirm Delete {cocktailName}
-      </Button>
       <Button type="submit" variant="link">
         Close
       </Button>
@@ -51,27 +31,39 @@ export function RemoveSavedCocktailButton({
     }
   };
 
+  const handleCloseModal = () => {
+    const modal = dialog.current;
+    if (modal) {
+      modal.close();
+    }
+  };
+
+  const [state, formAction] = useFormState(deleteSavedCocktail, '');
+
   return (
     <>
-      <Button
-        className={styles['remove-button']}
-        onClick={handleOpenModal}
-        disabled={isPending}
-      >
-        {!isPending && (
-          <>
-            Remove From <RiBookmark3Line size={22} />
-          </>
-        )}
-        {isPending && 'Removing Cocktail...'}
+      <Button className={styles['remove-button']} onClick={handleOpenModal}>
+        Remove From <RiBookmark3Line size={22} />
       </Button>
       <Modal
-        title="Remove"
+        key={cocktailId}
+        title={`Delete ${cocktailName}`}
         ref={dialog}
         actions={actions}
         portalElementId="confirm-remove-saved-cocktail-modal"
       >
         Are you sure you want to remove the &quot;{cocktailName}&quot; cocktail?
+        <form
+          action={formAction}
+          name="delete-cocktail-form"
+          id={cocktailId}
+          className={styles['delete-form']}
+        >
+          <input hidden defaultValue={cocktailId} name="cocktailId" />
+          <Button type="submit" variant="secondary">
+            Confirm Delete {cocktailName}
+          </Button>
+        </form>
       </Modal>
     </>
   );
