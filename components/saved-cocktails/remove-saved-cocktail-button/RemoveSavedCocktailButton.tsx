@@ -16,14 +16,6 @@ export function RemoveSavedCocktailButton({
 }: RemoveSavedCocktailButtonProps) {
   const dialog = useRef<ModalHandle>(null);
 
-  const actions = (
-    <>
-      <Button type="submit" variant="link">
-        Close
-      </Button>
-    </>
-  );
-
   const handleOpenModal = () => {
     const modal = dialog.current;
     if (modal) {
@@ -49,7 +41,6 @@ export function RemoveSavedCocktailButton({
         key={cocktailId}
         title={`Delete ${cocktailName}`}
         ref={dialog}
-        actions={actions}
         portalElementId="confirm-remove-saved-cocktail-modal"
       >
         Are you sure you want to remove the &quot;{cocktailName}&quot; cocktail?
@@ -60,7 +51,7 @@ export function RemoveSavedCocktailButton({
           className={styles['delete-form']}
         >
           <input hidden defaultValue={cocktailId} name="cocktailId" />
-          <Button type="submit" variant="secondary">
+          <Button type="submit" variant="secondary" onClick={handleCloseModal}>
             Confirm Delete {cocktailName}
           </Button>
         </form>

@@ -3,12 +3,11 @@
 import { ModalHandle } from '@/@types/components/modal';
 import { saveCocktails } from '@/actions/cocktails';
 import {
-	useBasketContext,
-	useBasketSetterContext,
+  useBasketContext,
+  useBasketSetterContext,
 } from '@/store/cocktail-basket-context/CocktailBasketContextProvider';
 import { useRef } from 'react';
 import { useFormState } from 'react-dom';
-import { Button } from '../ui/button/button';
 import { Modal } from '../ui/modal/modal';
 import { FeedbackMessage } from '../ui/muation-feedback/feedback-message';
 import { BasketItem } from './basket-item/BasketItem';
@@ -25,18 +24,7 @@ export function CocktailBasket() {
 
   const toggleCocktailBasket = useBasketSetterContext();
 
-  const [state, formAction] = useFormState(saveCocktails, '');
-
-  const actions = (
-    <>
-      <Button type="submit" variant="link">
-        Close
-      </Button>
-      {state.trim().length > 0 && (
-        <FeedbackMessage success={true} message={state} />
-      )}
-    </>
-  );
+  const [state, formAction, isPending] = useFormState(saveCocktails, '');
 
   const handleOpenModal = () => {
     const modal = dialog.current;
@@ -55,7 +43,6 @@ export function CocktailBasket() {
       <Modal
         ref={dialog}
         title="Cocktail Basket"
-        actions={actions}
         portalElementId="cocktail-basket-modal"
       >
         {cocktailKeys.length > 0 && (
@@ -88,6 +75,9 @@ export function CocktailBasket() {
           </>
         )}
         {cocktailKeys.length <= 0 && <EmptyBasketFeedback />}
+        {state.trim().length > 0 && (
+          <FeedbackMessage success={true} message={state} />
+        )}
       </Modal>
     </>
   );

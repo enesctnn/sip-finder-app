@@ -1,7 +1,7 @@
 export interface ModalProps {
   title: string;
   children: React.ReactNode;
-  actions: React.ReactNode;
+  actions?: React.ReactNode;
   portalElementId: string;
 }
 
