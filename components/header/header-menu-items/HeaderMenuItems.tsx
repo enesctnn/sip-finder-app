@@ -1,5 +1,5 @@
 import { CocktailBasket } from '@/components/cocktail-basket/CocktailBasket';
-import { LogoutButton } from '@/components/logout-button/LogoutButton';
+import { LogoutForm } from '@/components/logout-form/LogoutForm';
 import { OpenSavedCocktailsButton } from '@/components/saved-cocktails/open-saved-cocktails-button/OpenSavedCocktailsButton';
 import styles from './HeaderMenuItems.module.scss';
 
@@ -14,7 +14,7 @@ export function HeaderMenuItems() {
           <CocktailBasket />
         </li>
         <li>
-          <LogoutButton />
+          <LogoutForm />
         </li>
       </ul>
     </nav>

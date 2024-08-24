@@ -1,6 +1,9 @@
 'use client';
 
 import { MobileHeaderModalHandle } from '@/@types/components/MobileHeaderModal';
+import { CocktailBasket } from '@/components/cocktail-basket/CocktailBasket';
+import { LogoutForm } from '@/components/logout-form/LogoutForm';
+import { OpenSavedCocktailsButton } from '@/components/saved-cocktails/open-saved-cocktails-button/OpenSavedCocktailsButton';
 import { Button } from '@/components/ui/button/button';
 import {
   forwardRef,
@@ -9,12 +12,9 @@ import {
   useRef,
   useState,
 } from 'react';
+import { createPortal } from 'react-dom';
 import { IoMdClose } from 'react-icons/io';
 import styles from './MobileHeaderModal.module.scss';
-import { CocktailBasket } from '@/components/cocktail-basket/CocktailBasket';
-import { LogoutButton } from '@/components/logout-button/LogoutButton';
-import { createPortal } from 'react-dom';
-import { OpenSavedCocktailsButton } from '@/components/saved-cocktails/open-saved-cocktails-button/OpenSavedCocktailsButton';
 
 export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
   function MobileHeaderModal({}, ref) {
@@ -75,7 +75,7 @@ export const MobileHeaderModal = forwardRef<MobileHeaderModalHandle>(
                 <CocktailBasket />
               </li>
               <li>
-                <LogoutButton />
+                <LogoutForm />
               </li>
             </ul>
           </nav>
