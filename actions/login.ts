@@ -10,7 +10,7 @@ export async function login(
   formData: FormData
 ) {
   const { email, password } = Object.fromEntries(formData);
-  let errors: string[] = [];
+  const errors: string[] = [];
 
   if (!email || !password) {
     errors.push('All fields must be filled correctly!');
@@ -28,12 +28,13 @@ export async function login(
     return { errors };
   }
 
+  cookies().set('auth-token', matchingUser!.token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    expires: new Date(Date.now() + 3600 * 1000),
+  });
+	
   try {
-    cookies().set('auth-token', matchingUser!.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      expires: new Date(Date.now() + 3600 * 1000),
-    });
     revalidatePath('/', 'layout');
     redirect('/cocktails');
   } catch (err) {

@@ -2,11 +2,11 @@
 
 import { ModalHandle, ModalProps } from '@/@types/components/modal';
 import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
+	forwardRef,
+	useEffect,
+	useImperativeHandle,
+	useRef,
+	useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
@@ -27,6 +27,12 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
       const modal = dialog.current;
       if (modal) {
         modal.showModal();
+      }
+    },
+    close: () => {
+      const modal = dialog.current;
+      if (modal) {
+        modal.close();
       }
     },
   }));
@@ -67,15 +73,17 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(function Modal(
 
         <CardContent>{children}</CardContent>
 
-        <CardFooter>
-          <form
-            name="modal-close-form"
-            method="dialog"
-            className={styles['modal-actions']}
-          >
-            {actions}
-          </form>
-        </CardFooter>
+        {!!actions && (
+          <CardFooter>
+            <form
+              name="modal-close-form"
+              method="dialog"
+              className={styles['modal-actions']}
+            >
+              {actions}
+            </form>
+          </CardFooter>
+        )}
       </Card>
     </dialog>,
     targetElement as HTMLElement

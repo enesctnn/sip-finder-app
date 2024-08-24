@@ -2,7 +2,6 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   align-items: center;
   justify-content: center;
   place-content: center;
@@ -10,3 +9,11 @@
   margin: 0 0 2rem 0;
 }
 
+.save-cocktails-form {
+  display: flex;
+  width: 100%;
+
+  button {
+    margin-left: auto;
+  }
+}
