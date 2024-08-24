@@ -10,7 +10,7 @@ export async function login(
   formData: FormData
 ) {
   const { email, password } = Object.fromEntries(formData);
-  let errors: string[] = [];
+  const errors: string[] = [];
 
   if (!email || !password) {
     errors.push('All fields must be filled correctly!');

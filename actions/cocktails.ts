@@ -1,21 +1,22 @@
+'use server';
+
 import { SavedCocktailsType } from '@/@types/SavedCocktails';
+import { fetchUserServerSide } from '@/utils/fetchUserServerSide';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { redirect } from 'next/navigation';
 
-export async function POST(request: Request) {
+export async function saveCocktails(prevState: string, formData: FormData) {
+  const cocktailIds = Array.from(formData.keys());
+
   try {
-    const {
-      cocktailIds,
-      user_email,
-    }: { cocktailIds: string[]; user_email: string } = await request.json();
+    const user = await fetchUserServerSide();
 
-    if (
-      !Array.isArray(cocktailIds) ||
-      typeof user_email !== 'string' ||
-      !user_email
-    ) {
-      return NextResponse.json({ message: 'Invalid input' }, { status: 400 });
+    if (!user) {
+      redirect('/');
     }
+
+    const user_email = user.email;
 
     const prevSavedCocktails = JSON.parse(
       cookies().get('saved-cocktails')?.value || '{}'
@@ -39,15 +40,9 @@ export async function POST(request: Request) {
       secure: process.env.NODE_ENV === 'production',
     });
 
-    return NextResponse.json(
-      { message: 'Cocktails saved successfully!' },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error('Error processing save cocktails request:', error);
-    return NextResponse.json(
-      { message: 'Internal server error' },
-      { status: 500 }
-    );
+    revalidatePath('/saved-cocktails');
+    return 'Cocktails saved successfully!';
+  } catch (err) {
+    throw err;
   }
 }
