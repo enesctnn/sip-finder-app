@@ -1,5 +1,7 @@
 import { SearchCocktailsByNameResponseType } from '@/@types/api/TheCocktailsDbResponseTypes';
 import { CocktailsListProps } from '@/@types/components/CocktailsList';
+import bartenderGif from '@/public/assets/bartender.gif';
+import failGif from '@/public/assets/fail-bartending.gif';
 import { fetchCocktailsByName } from '@/utils/api';
 import { CocktailCard } from '../cocktail-card/CocktailCard';
 import { CocktailStatus } from './cocktail-status/CocktailStatus';
@@ -15,7 +17,7 @@ export async function CocktailsList({ filter }: CocktailsListProps) {
     return (
       <CocktailStatus
         title="Error! Failed to fetch cocktails."
-        src="/assets/fail-bartending.gif"
+        src={failGif}
         alt="himym bartender failure glass breaking."
       />
     );
@@ -25,7 +27,7 @@ export async function CocktailsList({ filter }: CocktailsListProps) {
     return (
       <CocktailStatus
         title="The searched cocktail was not found."
-        src="/assets/bartender.gif"
+        src={bartenderGif}
         alt="bartender wiping the glass."
       />
     );

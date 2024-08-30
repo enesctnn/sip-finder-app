@@ -11,9 +11,12 @@ export function CocktailStatus({
   return (
     <div className={`${styles['status-container']} ${className}`}>
       <h2>{title}</h2>
-      <div className={styles['image-container']}>
-        <Image src={src} alt={alt} fill unoptimized/>
-      </div>
+      <Image
+        className={styles['status-image']}
+        src={src}
+        alt={alt}
+        unoptimized
+      />
     </div>
   );
 }

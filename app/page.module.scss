@@ -28,19 +28,16 @@
   @include fade-slide-in-from-top;
 }
 
-.image-container {
+.logo {
   margin: 0 auto;
   margin-bottom: 24px;
   width: 200px;
-  min-height: 200px;
-  position: relative;
+  height: 200px;
   overflow: hidden;
   border-radius: 100%;
   border: 2px solid black;
-  img {
-    object-fit: cover;
-    object-position: center;
-  }
+  object-fit: cover;
+  object-position: center;
 }
 
 .home-menu {

@@ -1,14 +1,15 @@
 import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from '@/components/ui/card/Card';
 import { LinkButton } from '@/components/ui/link-button/link-button';
 import { fetchUserServerSide } from '@/utils/fetchUserServerSide';
 import Image from 'next/image';
 import styles from './page.module.scss';
+import logo from '/public/assets/pouring-amber-liquor.jpg';
 
 export default async function Home() {
   const user = await fetchUserServerSide();
@@ -16,13 +17,7 @@ export default async function Home() {
     <div className={styles.container}>
       <Card className={styles.card}>
         <CardHeader>
-          <div className={styles['image-container']}>
-            <Image
-              src="/assets/pouring-amber-liquor.jpg"
-              alt="cocktails image"
-              fill
-            />
-          </div>
+          <Image className={styles.logo} src={logo} alt="cocktails image" />
           <CardTitle className={styles.header}>
             Welcome to Sip Finder!
           </CardTitle>

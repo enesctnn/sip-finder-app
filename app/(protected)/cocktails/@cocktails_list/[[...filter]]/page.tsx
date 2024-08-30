@@ -1,5 +1,6 @@
 import { CocktailStatus } from '@/components/cocktails/cocktails-list/cocktail-status/CocktailStatus';
 import { CocktailsList } from '@/components/cocktails/cocktails-list/CocktailsList';
+import cocktailGif from '@/public/assets/pouring-cocktail.gif';
 import { Suspense } from 'react';
 import styles from './page.module.scss';
 
@@ -13,13 +14,13 @@ export default function CocktailsListPage({
       fallback={
         <CocktailStatus
           title="Cocktails Loading . . ."
-          src="/assets/pouring-cocktail.gif"
-          alt="pouring wiskey gif."
           className={styles.pulse}
+          src={cocktailGif}
+          alt="pouring wiskey gif."
         />
       }
     >
-      <CocktailsList filter={filter || ''} />
+      <CocktailsList filter={decodeURI(filter || '')} />
     </Suspense>
   );
 }

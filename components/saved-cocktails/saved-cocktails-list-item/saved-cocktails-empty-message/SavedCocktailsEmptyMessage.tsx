@@ -1,3 +1,4 @@
+import waiterImg from '@/public/assets/crossing-arms.jpg';
 import Image from 'next/image';
 import styles from './SavedCocktailsEmptyMessage.module.scss';
 
@@ -12,10 +13,9 @@ export function SavedCocktailsEmptyMessage() {
         </p>
       </section>
       <Image
-        src="/assets/crossing-arms.jpg"
+        src={waiterImg}
         alt="waiter crossing arms"
-        width={1920}
-        height={1280}
+        className={styles['waiter-img']}
       />
     </div>
   );
