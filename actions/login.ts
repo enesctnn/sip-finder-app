@@ -1,43 +1,33 @@
 'use server';
 
+import { LoginFormSchema } from '@/schemas/loginSchema';
 import { dummyUsers } from '@/utils/dummyUser';
-import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function login(
-  prevState: { errors: string[] },
-  formData: FormData
-) {
-  const { email, password } = Object.fromEntries(formData);
-  const errors: string[] = [];
+export async function login(prevState: { error?: string }, formData: FormData) {
+	const formObject = Object.fromEntries(formData);
+	const { data, error } = LoginFormSchema.safeParse(formObject);
 
-  if (!email || !password) {
-    errors.push('All fields must be filled correctly!');
-  }
+	if (!data || error) {
+		return { error: 'All fields must be filled correctly!' };
+	}
 
-  const matchingUser = dummyUsers.find(
-    user => user.email === email && user.password === password
-  );
+	const matchingUser = dummyUsers.find((user) => user.email === data.email && user.password === data.password);
 
-  if (!matchingUser) {
-    errors.push('Invalid credentials');
-  }
+	if (!matchingUser) {
+		return { error: 'Invalid credentials' };
+	}
 
-  if (errors.length > 0) {
-    return { errors };
-  }
+	cookies().set('auth-token', matchingUser.token, {
+		httpOnly: true,
+		secure: process.env.NODE_ENV === 'production',
+		expires: new Date(Date.now() + 3600 * 1000)
+	});
 
-  cookies().set('auth-token', matchingUser!.token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    expires: new Date(Date.now() + 3600 * 1000),
-  });
-	
-  try {
-    revalidatePath('/', 'layout');
-    redirect('/cocktails');
-  } catch (err) {
-    throw err;
-  }
+	try {
+		redirect('/cocktails');
+	} catch (err) {
+		throw err;
+	}
 }
