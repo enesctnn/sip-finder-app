@@ -1,3 +1,1 @@
-export type SavedCocktailsType = {
-  [key: string]: string[];
-};
+export type SavedCocktailsType = Record<string, string[]>;

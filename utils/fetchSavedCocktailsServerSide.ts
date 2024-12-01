@@ -7,22 +7,18 @@ import { fetchCocktailsByIds } from './api';
 import { fetchUserServerSide } from './fetchUserServerSide';
 
 export async function fetchSavedCocktailsServerSide() {
-  const savedCocktails = JSON.parse(
-    cookies().get('saved-cocktails')?.value || '{}'
-  ) as SavedCocktailsType;
-	
-  try {
-    const user = await fetchUserServerSide();
-    if (!user) redirect('/');
+	const savedCocktails = JSON.parse(cookies().get('saved-cocktails')?.value || '{}') as SavedCocktailsType;
 
-    const matchingUserSavedCocktails = savedCocktails[user.email] || [];
+	try {
+		const user = await fetchUserServerSide();
+		if (!user) redirect('/');
 
-    const cocktails = await fetchCocktailsByIds(matchingUserSavedCocktails);
+		const matchingUserSavedCocktails = savedCocktails[user.email] || [];
 
-    return cocktails;
-  } catch (error) {
-    throw new Error(
-      'Error! Something went wrong while fetching saved cocktails.'
-    );
-  }
+		const cocktails = await fetchCocktailsByIds(matchingUserSavedCocktails);
+
+		return cocktails;
+	} catch (error) {
+		throw new Error('Error! Something went wrong while fetching saved cocktails.');
+	}
 }

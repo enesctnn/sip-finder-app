@@ -4,23 +4,19 @@ import cocktailGif from '@/public/assets/pouring-cocktail.gif';
 import { Suspense } from 'react';
 import styles from './page.module.scss';
 
-export default function CocktailsListPage({
-  params: { filter },
-}: {
-  params: { filter?: string };
-}) {
-  return (
-    <Suspense
-      fallback={
-        <CocktailStatus
-          title="Cocktails Loading . . ."
-          className={styles.pulse}
-          src={cocktailGif}
-          alt="pouring wiskey gif."
-        />
-      }
-    >
-      <CocktailsList filter={decodeURI(filter || '')} />
-    </Suspense>
-  );
+export default function CocktailsListPage({ params: { filter } }: { params: { filter?: string } }) {
+	return (
+		<Suspense
+			fallback={
+				<CocktailStatus
+					title="Cocktails Loading . . ."
+					className={styles.pulse}
+					src={cocktailGif}
+					alt="pouring wiskey gif."
+				/>
+			}
+		>
+			<CocktailsList filter={filter ? decodeURI(filter) : 'ice'} />
+		</Suspense>
+	);
 }

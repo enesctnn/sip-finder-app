@@ -1,10 +1,10 @@
 .layout {
-  background-color: darken($primary-900, 5%);
-  @include fullscreen;
-  width: 100%;
-  overflow: hidden;
+	background-color: darken($primary-900, 5%);
+	@include fullscreen;
+	width: 100%;
+	overflow: hidden;
 	#mobile-menu-modal {
-    position: absolute;
-    inset: 0;
-  }
+		position: absolute;
+		inset: 0;
+	}
 }

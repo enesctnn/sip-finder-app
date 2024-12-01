@@ -113,7 +113,6 @@ The Sip Finder App is deployed on Vercel. You can access the live application at
 ## Dependencies
 
 - **[@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)** [![npm](https://img.shields.io/npm/v/@hookform/resolvers)](https://www.npmjs.com/package/@hookform/resolvers)
-- **[axios](https://www.npmjs.com/package/axios)** [![npm](https://img.shields.io/npm/v/axios)](https://www.npmjs.com/package/axios)
 - **[next](https://www.npmjs.com/package/next)** [![npm](https://img.shields.io/npm/v/next)](https://www.npmjs.com/package/next)
 - **[react](https://www.npmjs.com/package/react)** [![npm](https://img.shields.io/npm/v/react)](https://www.npmjs.com/package/react)
 - **[react-dom](https://www.npmjs.com/package/react-dom)** [![npm](https://img.shields.io/npm/v/react-dom)](https://www.npmjs.com/package/react-dom)
